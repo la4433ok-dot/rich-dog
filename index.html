@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Apple Y | Earn with Ads</title>
-    
+
     <!-- Telegram & AdsGram SDK -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
-    
+    <script src="https://telegram.org/js/telegram-web-app.js">
+    </script>
+    <script src="https://sad.adsgram.ai/js/sad.min.js">
+    </script>
+
     <!-- Tailwind + Fonts + Icons -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <style>
-        * { font-family: 'Inter', sans-serif; }
-        body { 
-            background: #f0f4fc; 
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: #f0f4fc;
             transition: background 0.2s, color 0.2s;
             padding-bottom: 80px;
         }
@@ -29,26 +34,26 @@
         .card {
             background: white;
             border-radius: 28px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.05);
             transition: all 0.2s;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid rgba(0, 0, 0, 0.03);
         }
         body.dark .card {
             background: #1a253c;
             border-color: #2d3a5e;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
         .glass-nav {
-            background: rgba(255,255,255,0.8);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         body.dark .glass-nav {
-            background: rgba(11,17,32,0.85);
+            background: rgba(11, 17, 32, 0.85);
             border-bottom-color: #2d3a5e;
         }
         .bottom-nav {
-            background: rgba(255,255,255,0.96);
+            background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(12px);
             border-top: 1px solid #eef2f6;
             transition: 0.2s;
@@ -60,15 +65,20 @@
         /* Blueberry Primary Button */
         .btn-primary {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
             transition: transform 0.1s ease, box-shadow 0.2s;
         }
-        .btn-primary:active { transform: scale(0.96); }
-        .badge-blue { background: #eef2ff; color: #1e40af; border-radius: 40px; }
-        body.dark .badge-blue { background: #1e2b4f; color: #60a5fa; }
-        .support-circle {
-            background: linear-gradient(145deg, #3b82f6, #2563eb);
-            box-shadow: 0 8px 18px rgba(59,130,246,0.4);
+        .btn-primary:active {
+            transform: scale(0.96);
+        }
+        .badge-blue {
+            background: #eef2ff;
+            color: #1e40af;
+            border-radius: 40px;
+        }
+        body.dark .badge-blue {
+            background: #1e2b4f;
+            color: #60a5fa;
         }
         .input-modern {
             background: #f8fafc;
@@ -83,13 +93,35 @@
             border-color: #334155;
             color: white;
         }
-        .input-modern:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.2); }
-        .fade-in { animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-        .page { display: none; }
-        .page.active { display: block; animation: fadeIn 0.25s ease; }
-        .nav-link.active { color: #3b82f6; }
-        
+        .input-modern:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+            animation: fadeIn 0.25s ease;
+        }
+        .nav-link.active {
+            color: #3b82f6;
+        }
+
         /* LARGE AD BUTTON - Blueberry theme */
         .ad-button-container {
             margin: 20px 0 10px;
@@ -106,10 +138,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 15px 30px rgba(59,130,246,0.4);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
             cursor: pointer;
             transition: all 0.2s ease;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             padding: 18px 20px;
             text-align: center;
             margin: 0 auto;
@@ -120,7 +152,7 @@
         .embedded-ad-btn i {
             font-size: 38px;
             color: white;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
             margin-bottom: 8px;
         }
         .embedded-ad-btn .btn-title {
@@ -132,11 +164,11 @@
         .embedded-ad-btn .reward-text {
             font-size: 14px;
             font-weight: 500;
-            color: rgba(255,255,255,0.95);
+            color: rgba(255, 255, 255, 0.95);
             margin-top: 5px;
         }
         .embedded-ad-btn .ad-counter {
-            background: rgba(0,0,0,0.25);
+            background: rgba(0, 0, 0, 0.25);
             border-radius: 40px;
             padding: 5px 14px;
             font-size: 13px;
@@ -146,16 +178,28 @@
             display: inline-block;
         }
         body.dark .embedded-ad-btn .ad-counter {
-            background: rgba(0,0,0,0.4);
+            background: rgba(0, 0, 0, 0.4);
         }
-        
+
         /* Text colors for blueberry theme */
-        .text-primary { color: #1e3a8a; }
-        body.dark .text-primary { color: #bfdbfe; }
-        .text-secondary { color: #475569; }
-        body.dark .text-secondary { color: #94a3b8; }
-        .bg-soft-blue { background: #eef2ff; }
-        body.dark .bg-soft-blue { background: #1e2b4f; }
+        .text-primary {
+            color: #1e3a8a;
+        }
+        body.dark .text-primary {
+            color: #bfdbfe;
+        }
+        .text-secondary {
+            color: #475569;
+        }
+        body.dark .text-secondary {
+            color: #94a3b8;
+        }
+        .bg-soft-blue {
+            background: #eef2ff;
+        }
+        body.dark .bg-soft-blue {
+            background: #1e2b4f;
+        }
     </style>
 </head>
 <body class="max-w-md mx-auto relative">
@@ -171,7 +215,7 @@
         <header class="glass-nav sticky top-0 z-20 px-5 py-3 flex items-center justify-between backdrop-blur-md">
             <div class="flex items-center gap-2">
                 <i class="fas fa-bolt text-blue-500 text-xl"></i>
-                <h1 class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Apple Y"</h1>
+                <h1 class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Apple Y</h1>
             </div>
             <div class="flex items-center gap-4">
                 <button id="darkModeToggle" class="text-slate-700 dark:text-white">
@@ -196,7 +240,7 @@
                     </div>
                     <button id="homeWithdrawBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-5 py-2.5 rounded-2xl shadow-md transition">Withdraw</button>
                 </div>
-                
+
                 <!-- Info card -->
                 <div class="card p-5 text-center">
                     <i class="fas fa-hand-holding-usd text-blue-500 text-3xl mb-2"></i>
@@ -225,12 +269,17 @@
                     <input type="number" id="withdrawAmountInput" placeholder="Enter amount" class="input-modern">
                     <select id="withdrawMethodSelect" class="input-modern">
                         <option value="">Select method</option>
-                        <option>Bkash</option><option>Nagad</option><option>Rocket</option><option>Bank</option>
+                        <option>Bkash</option>
+                        <option>Nagad</option>
+                        <option>Rocket</option>
+                        <option>Bank</option>
                     </select>
                     <div id="dynamicPaymentField"></div>
                     <button id="withdrawRequestBtn" class="w-full btn-primary text-white font-bold py-3 rounded-2xl">Request Withdrawal</button>
                 </div>
-                <div><h3 class="font-semibold text-lg text-primary mb-3">Withdrawal History</h3><div id="historyList" class="space-y-3"></div></div>
+                <div><h3 class="font-semibold text-lg text-primary mb-3">Withdrawal History</h3>
+                    <div id="historyList" class="space-y-3"></div>
+                </div>
             </div>
 
             <!-- PROFILE PAGE (Privacy & Policy section) -->
@@ -244,7 +293,7 @@
                     <div class="flex justify-between"><span class="text-secondary">Joined via</span><span id="joinedViaText" class="font-medium text-primary">Telegram</span></div>
                     <div class="flex justify-between"><span class="text-secondary">User ID</span><span id="userIdText" class="font-mono text-primary">-</span></div>
                 </div>
-                
+
                 <!-- Professional Privacy & Policy Section -->
                 <div class="card p-5 space-y-3">
                     <h3 class="font-bold text-lg flex items-center gap-2 text-primary"><i class="fas fa-shield-alt text-blue-500"></i> Privacy & Policy</h3>
@@ -257,12 +306,14 @@
                         <p class="pt-1 text-center text-[10px] text-slate-400">Last updated: April 2026 | SmartMoney Pro</p>
                     </div>
                 </div>
-                
+
                 <div id="adminPanelLink" class="hidden"><button onclick="navigateTo('admin')" class="w-full bg-blue-700 text-white font-bold py-3 rounded-2xl">Admin Dashboard</button></div>
             </div>
 
             <!-- NOTIFICATIONS -->
-            <div id="notificationsPage" class="page"><h2 class="text-2xl font-bold text-primary mb-4">Inbox</h2><div id="notifList" class="space-y-3"></div></div>
+            <div id="notificationsPage" class="page"><h2 class="text-2xl font-bold text-primary mb-4">Inbox</h2>
+                <div id="notifList" class="space-y-3"></div>
+            </div>
 
             <!-- ADMIN PANEL (hidden) -->
             <div id="adminPage" class="page space-y-5">
@@ -278,9 +329,6 @@
             <a href="#" class="nav-link flex flex-col items-center gap-0.5 text-secondary" data-page="wallet"><i class="fas fa-wallet text-xl"></i><span class="text-[11px]">Wallet</span></a>
             <a href="#" class="nav-link flex flex-col items-center gap-0.5 text-secondary" data-page="profile"><i class="fas fa-user text-xl"></i><span class="text-[11px]">Profile</span></a>
         </nav>
-
-        <!-- Support Button (blueberry theme) -->
-        <div id="supportFab" class="fixed bottom-24 right-5 support-circle w-12 h-12 rounded-full flex items-center justify-center cursor-pointer shadow-xl z-30"><i class="fas fa-headset text-white text-xl"></i></div>
 
         <!-- Alert Modal -->
         <div id="customAlert" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"><div class="bg-white dark:bg-slate-800 rounded-3xl p-6 w-full max-w-xs text-center"><p id="alertMsg" class="mb-4 text-slate-800 dark:text-white"></p><button id="alertCloseBtn" class="bg-blue-500 px-6 py-2 rounded-xl text-white">OK</button></div></div>
@@ -298,9 +346,10 @@
             reportChannelId: "-1003331749273",
             adminId: "7793213912"
         };
-        
+
         let tg = window.Telegram.WebApp;
-        let currentUser = null, userData = null;
+        let currentUser = null,
+            userData = null;
         let adsGramCount = 0;
         let adsGramReady = false;
         let AdController = null;
@@ -308,44 +357,50 @@
 
         // Storage helpers
         function getUserKey(uid) { return `user_${uid}`; }
+
         function loadUser(uid) { const raw = localStorage.getItem(getUserKey(uid)); return raw ? JSON.parse(raw) : null; }
+
         function saveUser(uid, data) { localStorage.setItem(getUserKey(uid), JSON.stringify(data)); }
+
         function getWithdrawals(uid) { return JSON.parse(localStorage.getItem(`withdrawals_${uid}`) || '[]'); }
-        function saveWithdrawal(uid, wd) { const arr = getWithdrawals(uid); arr.push(wd); localStorage.setItem(`withdrawals_${uid}`, JSON.stringify(arr)); }
+
+        function saveWithdrawal(uid, wd) { const arr = getWithdrawals(uid); arr.push(wd);
+            localStorage.setItem(`withdrawals_${uid}`, JSON.stringify(arr)); }
 
         // UI Updates
         function updateUI() {
-            if(!userData) return;
+            if (!userData) return;
             document.getElementById('balanceAmount').innerText = userData.balance;
             document.getElementById('walletBalanceSpan').innerText = userData.balance;
             document.getElementById('profileName').innerText = userData.name;
-            document.getElementById('profileUsername').innerText = '@'+(userData.username||'user');
+            document.getElementById('profileUsername').innerText = '@' + (userData.username || 'user');
             document.getElementById('joinedViaText').innerText = userData.joinedVia;
             document.getElementById('userIdText').innerText = currentUser?.id;
             const badge = document.getElementById('adProgressBadgeEmbedded');
-            if(badge) badge.innerText = `Today: ${adsGramCount}/${CONFIG.dailyAdLimit} ads`;
+            if (badge) badge.innerText = `Today: ${adsGramCount}/${CONFIG.dailyAdLimit} ads`;
         }
 
         // AdsGram initialization
         function initAdsGram() {
-            if(!window.Adsgram) { setTimeout(initAdsGram, 1500); return; }
+            if (!window.Adsgram) { setTimeout(initAdsGram, 1500); return; }
             try {
                 AdController = window.Adsgram.init({ blockId: CONFIG.adsgramBlockId });
-                if(AdController) adsGramReady = true;
+                if (AdController) adsGramReady = true;
                 else setTimeout(initAdsGram, 2000);
-            } catch(e) { setTimeout(initAdsGram, 2000); }
+            } catch (e) { setTimeout(initAdsGram, 2000); }
         }
 
         // MAIN AD CLAIM FUNCTION
         async function claimAdReward() {
-            if(!adsGramReady) { showAlert("Ad system is initializing. Please wait."); return; }
-            if(isAdShowing) { showAlert("Ad is already playing. Please wait."); return; }
-            if(adsGramCount >= CONFIG.dailyAdLimit) {
-                const now = new Date(), tomorrow = new Date(now);
+            if (!adsGramReady) { showAlert("Ad system is initializing. Please wait."); return; }
+            if (isAdShowing) { showAlert("Ad is already playing. Please wait."); return; }
+            if (adsGramCount >= CONFIG.dailyAdLimit) {
+                const now = new Date(),
+                    tomorrow = new Date(now);
                 tomorrow.setDate(tomorrow.getDate() + 1);
-                tomorrow.setHours(0,0,0,0);
-                const hoursLeft = Math.floor((tomorrow - now) / (1000*60*60));
-                const minsLeft = Math.floor(((tomorrow - now) % (1000*60*60)) / (1000*60));
+                tomorrow.setHours(0, 0, 0, 0);
+                const hoursLeft = Math.floor((tomorrow - now) / (1000 * 60 * 60));
+                const minsLeft = Math.floor(((tomorrow - now) % (1000 * 60 * 60)) / (1000 * 60));
                 showAlert(`Daily limit reached (${adsGramCount}/${CONFIG.dailyAdLimit}). Reset in ${hoursLeft}h ${minsLeft}m.`);
                 return;
             }
@@ -355,7 +410,7 @@
             adBtn.style.pointerEvents = 'none';
             try {
                 showAlert("Loading ad... Please wait.");
-                if(AdController) {
+                if (AdController) {
                     await AdController.show();
                     adsGramCount++;
                     userData.adsGramCount = adsGramCount;
@@ -365,8 +420,11 @@
                     updateUI();
                     showAlert(`🎉 +৳${CONFIG.adReward} earned! (${adsGramCount}/${CONFIG.dailyAdLimit})`);
                 } else throw new Error("AdController missing");
-            } catch(error) { showAlert("Failed to show ad. Please try again."); } 
-            finally { isAdShowing = false; adBtn.style.opacity = '1'; adBtn.style.pointerEvents = 'auto'; }
+            } catch (error) { showAlert("Failed to show ad. Please try again."); } finally {
+                isAdShowing = false;
+                adBtn.style.opacity = '1';
+                adBtn.style.pointerEvents = 'auto';
+            }
         }
 
         // Withdrawal logic
@@ -374,87 +432,105 @@
             const amt = parseInt(document.getElementById('withdrawAmountInput').value);
             const method = document.getElementById('withdrawMethodSelect').value;
             const detail = document.getElementById('paymentDetailField')?.value;
-            if(!amt || amt < CONFIG.minWithdrawal) return showAlert(`Minimum withdrawal ৳${CONFIG.minWithdrawal}`);
-            if(amt > userData.balance) return showAlert("Insufficient balance");
-            if(!method || !detail) return showAlert("Fill all fields");
-            saveWithdrawal(currentUser.id, { amount: amt, method, paymentDetails: detail, status: "pending", requestedAt: new Date().toISOString() });
+            if (!amt || amt < CONFIG.minWithdrawal) return showAlert(`Minimum withdrawal ৳${CONFIG.minWithdrawal}`);
+            if (amt > userData.balance) return showAlert("Insufficient balance");
+            if (!method || !detail) return showAlert("Fill all fields");
+            saveWithdrawal(currentUser.id, { amount: amt, method, paymentDetails: detail, status: "pending",
+                requestedAt: new Date().toISOString() });
             userData.balance -= amt;
             saveUser(currentUser.id, userData);
             updateUI();
             loadHistory();
             showAlert("Withdrawal request submitted! Processed within 24-48h.");
             document.getElementById('withdrawAmountInput').value = '';
-            if(document.getElementById('paymentDetailField')) document.getElementById('paymentDetailField').value = '';
+            if (document.getElementById('paymentDetailField')) document.getElementById('paymentDetailField').value = '';
         }
 
         function loadHistory() {
             const list = getWithdrawals(currentUser.id);
             const container = document.getElementById('historyList');
-            if(!list.length) { container.innerHTML = '<div class="text-center text-secondary">No withdrawals yet</div>'; return; }
-            container.innerHTML = list.reverse().map(w => `<div class="card p-3 flex justify-between"><div><p class="font-bold text-primary">৳${w.amount} - ${w.method}</p><p class="text-xs text-secondary">${new Date(w.requestedAt).toLocaleDateString()}</p></div><span class="text-xs font-semibold ${w.status==='pending'?'text-amber-500':'text-green-500'}">${w.status}</span></div>`).join('');
+            if (!list.length) { container.innerHTML = '<div class="text-center text-secondary">No withdrawals yet</div>'; return; }
+            container.innerHTML = list.reverse().map(w =>
+                `<div class="card p-3 flex justify-between"><div><p class="font-bold text-primary">৳${w.amount} - ${w.method}</p><p class="text-xs text-secondary">${new Date(w.requestedAt).toLocaleDateString()}</p></div><span class="text-xs font-semibold ${w.status==='pending'?'text-amber-500':'text-green-500'}">${w.status}</span></div>`
+                ).join('');
         }
 
         function updatePaymentField() {
             const m = document.getElementById('withdrawMethodSelect').value;
             const container = document.getElementById('dynamicPaymentField');
             let placeholder = "Enter payment details";
-            if(m === 'Bkash') placeholder = "Bkash number";
-            else if(m === 'Nagad') placeholder = "Nagad number";
-            else if(m === 'Rocket') placeholder = "Rocket number";
-            else if(m === 'Bank') placeholder = "Bank account details";
+            if (m === 'Bkash') placeholder = "Bkash number";
+            else if (m === 'Nagad') placeholder = "Nagad number";
+            else if (m === 'Rocket') placeholder = "Rocket number";
+            else if (m === 'Bank') placeholder = "Bank account details";
             container.innerHTML = `<input id="paymentDetailField" class="input-modern" placeholder="${placeholder}">`;
         }
 
         function loadNotif() {
             const list = [
-                {title: "Payment Update", msg: "Minimum withdrawal is 2000 BDT. Keep earning!"},
-                {title: "Welcome!", msg: "Watch ads using the button on Home page and earn instantly."},
-                {title: "New Feature", msg: "Only AdsGram ads available now. Simple & fast earnings."}
+                { title: "Payment Update", msg: "Minimum withdrawal is 2000 BDT. Keep earning!" },
+                { title: "Welcome!", msg: "Watch ads using the button on Home page and earn instantly." },
+                { title: "New Feature", msg: "Only AdsGram ads available now. Simple & fast earnings." }
             ];
             const container = document.getElementById('notifList');
-            container.innerHTML = list.map(n => `<div class="card p-4"><h3 class="font-bold text-primary">${n.title}</h3><p class="text-sm text-secondary">${n.msg}</p><span class="text-[10px] text-slate-400">Just now</span></div>`).join('');
+            container.innerHTML = list.map(n =>
+                    `<div class="card p-4"><h3 class="font-bold text-primary">${n.title}</h3><p class="text-sm text-secondary">${n.msg}</p><span class="text-[10px] text-slate-400">Just now</span></div>`
+                    ).join('');
         }
 
         function sendBonusAll() {
             const amt = parseInt(document.getElementById('bonusAmountInput').value);
-            if(!amt) return showAlert("Enter amount");
-            for(let i=0; i<localStorage.length; i++) {
+            if (!amt) return showAlert("Enter amount");
+            for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
-                if(key?.startsWith('user_')) {
+                if (key?.startsWith('user_')) {
                     const u = JSON.parse(localStorage.getItem(key));
                     u.balance = (u.balance || 0) + amt;
                     localStorage.setItem(key, JSON.stringify(u));
                 }
             }
-            if(userData) { userData.balance += amt; saveUser(currentUser.id, userData); updateUI(); }
+            if (userData) { userData.balance += amt;
+                saveUser(currentUser.id, userData);
+                updateUI(); }
             showAlert(`Bonus ৳${amt} sent to all users.`);
         }
 
         async function sendReport() {
             let totalUsers = 0;
-            for(let i=0; i<localStorage.length; i++) if(localStorage.key(i)?.startsWith('user_')) totalUsers++;
-            const msg = `📊 SmartMoney Pro Report\n👥 Total users: ${totalUsers}\n📺 Ads watched today: ${adsGramCount}/${CONFIG.dailyAdLimit}\n💰 User balance (sample): ${userData?.balance || 0} BDT`;
-            try { await fetch(`https://api.telegram.org/bot${CONFIG.botToken}/sendMessage`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ chat_id: CONFIG.reportChannelId, text: msg }) }); showAlert("Report sent"); } catch(e) { showAlert("Report error"); }
+            for (let i = 0; i < localStorage.length; i++)
+                if (localStorage.key(i)?.startsWith('user_')) totalUsers++;
+            const msg =
+                `📊 SmartMoney Pro Report\n👥 Total users: ${totalUsers}\n📺 Ads watched today: ${adsGramCount}/${CONFIG.dailyAdLimit}\n💰 User balance (sample): ${userData?.balance || 0} BDT`;
+            try {
+                await fetch(`https://api.telegram.org/bot${CONFIG.botToken}/sendMessage`, { method: 'POST', headers: {
+                        'Content-Type': 'application/json'
+                    }, body: JSON.stringify({ chat_id: CONFIG.reportChannelId, text: msg }) });
+                showAlert("Report sent");
+            } catch (e) { showAlert("Report error"); }
         }
 
         function navigateTo(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(`${page}Page`).classList.add('active');
-            if(page === 'wallet') loadHistory();
-            if(page === 'notifications') loadNotif();
-            if(page === 'admin') document.getElementById('zoneStatsMini').innerHTML = `Ads watched: ${adsGramCount}/${CONFIG.dailyAdLimit}`;
+            if (page === 'wallet') loadHistory();
+            if (page === 'notifications') loadNotif();
+            if (page === 'admin') document.getElementById('zoneStatsMini').innerHTML =
+                `Ads watched: ${adsGramCount}/${CONFIG.dailyAdLimit}`;
             document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-            if(page === 'home') document.querySelector('.nav-link[data-page="home"]')?.classList.add('active');
-            if(page === 'wallet') document.querySelector('.nav-link[data-page="wallet"]')?.classList.add('active');
-            if(page === 'profile') document.querySelector('.nav-link[data-page="profile"]')?.classList.add('active');
+            if (page === 'home') document.querySelector('.nav-link[data-page="home"]')?.classList.add('active');
+            if (page === 'wallet') document.querySelector('.nav-link[data-page="wallet"]')?.classList.add('active');
+            if (page === 'profile') document.querySelector('.nav-link[data-page="profile"]')?.classList.add('active');
         }
         window.navigateTo = navigateTo;
 
-        function showAlert(msg) { const el = document.getElementById('customAlert'); document.getElementById('alertMsg').innerText = msg; el.classList.remove('hidden'); document.getElementById('alertCloseBtn').onclick = () => el.classList.add('hidden'); }
+        function showAlert(msg) { const el = document.getElementById('customAlert');
+            document.getElementById('alertMsg').innerText = msg;
+            el.classList.remove('hidden');
+            document.getElementById('alertCloseBtn').onclick = () => el.classList.add('hidden'); }
 
         function initDark() {
             const isDark = localStorage.getItem('theme') === 'dark';
-            if(isDark) document.body.classList.add('dark');
+            if (isDark) document.body.classList.add('dark');
             document.getElementById('darkModeToggle').onclick = () => {
                 document.body.classList.toggle('dark');
                 localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
@@ -464,18 +540,24 @@
         }
 
         function startApp() {
-            tg.ready(); tg.expand();
+            tg.ready();
+            tg.expand();
             const u = tg.initDataUnsafe.user;
-            if(!u) { showAlert("Please open inside Telegram"); return; }
-            currentUser = { id: u.id.toString(), firstName: u.first_name || '', username: u.username || '', photo_url: u.photo_url };
+            if (!u) { showAlert("Please open inside Telegram"); return; }
+            currentUser = { id: u.id.toString(), firstName: u.first_name || '', username: u.username || '',
+                photo_url: u.photo_url };
             let stored = loadUser(currentUser.id);
             const today = new Date().toISOString().split('T')[0];
-            if(!stored) { stored = { uid: currentUser.id, name: currentUser.firstName, username: currentUser.username, balance: 0, adsGramCount: 0, lastAdsDate: today, joinedVia: 'Telegram' }; saveUser(currentUser.id, stored); }
+            if (!stored) { stored = { uid: currentUser.id, name: currentUser.firstName, username: currentUser.username,
+                    balance: 0, adsGramCount: 0, lastAdsDate: today, joinedVia: 'Telegram' };
+                saveUser(currentUser.id, stored); }
             userData = stored;
-            if(userData.lastAdsDate !== today) { userData.adsGramCount = 0; userData.lastAdsDate = today; saveUser(currentUser.id, userData); }
+            if (userData.lastAdsDate !== today) { userData.adsGramCount = 0;
+                userData.lastAdsDate = today;
+                saveUser(currentUser.id, userData); }
             adsGramCount = userData.adsGramCount || 0;
             updateUI();
-            if(currentUser.id === CONFIG.adminId) document.getElementById('adminPanelLink').classList.remove('hidden');
+            if (currentUser.id === CONFIG.adminId) document.getElementById('adminPanelLink').classList.remove('hidden');
             loadNotif();
         }
 
@@ -485,10 +567,10 @@
         document.getElementById('sendBonusAllBtn').onclick = sendBonusAll;
         document.getElementById('manualReportBtn').onclick = sendReport;
         document.getElementById('bellBtn').onclick = () => navigateTo('notifications');
-        document.getElementById('supportFab').onclick = () => tg.openLink("https://t.me/smartmoneypro_bot");
         document.getElementById('embeddedAdButton').onclick = claimAdReward;
-        document.querySelectorAll('.nav-link').forEach(link => { link.onclick = (e) => { e.preventDefault(); navigateTo(link.dataset.page); }; });
-        
+        document.querySelectorAll('.nav-link').forEach(link => { link.onclick = (e) => { e.preventDefault();
+                navigateTo(link.dataset.page); }; });
+
         initDark();
         initAdsGram();
         startApp();
