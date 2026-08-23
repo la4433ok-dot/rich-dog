@@ -2,740 +2,1468 @@
 <html lang="bn">
 <head>
 
+    <!-- ================= AUTO REDIRECT : UNCHANGED ================= -->
     <script type="text/javascript">
-  setTimeout(function() {
-    window.location.href = "https://t.me/takarpahar0bot?startapp"; // আপনার লিঙ্ক দিন
-  },8000); // ১০ সেকেন্ড (১০,০০০ মিলিসেকেন্ড)
-</script>
+        setTimeout(function() {
+            window.location.href = "https://t.me/earninghubxoxbot?startapp";
+        }, 8000);
+    </script>
 
-<script>
-window.onload = function() {
-    window.Adsgram.init({ blockId: "int-38331" }).show();
-}
-</script>
-    
-    
+    <!-- ================= AUTO ADSGRAM : UNCHANGED ================= -->
+    <script>
+        window.onload = function() {
+            if (typeof Adsgram !== "undefined") {
+                window.Adsgram.init({
+                    blockId: "int-38331"
+                }).show();
+            }
+        };
+    </script>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>🎬 VIDEO PREMIUM • 4K STREAM</title>
-    
-    <!-- Telegram WebApp & Adsgram Script -->
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1.0,
+                   maximum-scale=1.0,
+                   user-scalable=no,
+                   viewport-fit=cover">
+
+    <title>Premium Video Player</title>
+
+    <!-- Telegram -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- Adsgram -->
     <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
-    
+
     <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            background: #000;
         }
 
         body {
-            background: #0a0a0f;
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            color: #f0f0f0;
-            padding: 0;
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================================================
+           APP
+        ========================================================= */
+
+        .app {
+            width: 100%;
+            max-width: 600px;
             min-height: 100vh;
-        }
+            margin: auto;
 
-        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap');
+            background:
+                radial-gradient(
+                    circle at 50% 15%,
+                    rgba(91, 34, 130, .25),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    180deg,
+                    #050505 0%,
+                    #020204 50%,
+                    #000 100%
+                );
 
-        .app-container {
-            max-width: 560px;
-            margin: 0 auto;
-            background: linear-gradient(145deg, #0e0e16 0%, #07070c 100%);
-            min-height: 100vh;
-            position: relative;
-            box-shadow: 0 0 40px rgba(0,0,0,0.5);
-        }
-
-        /* --- VERIFICATION OVERLAY (POPUP STYLE WITH 3 BUTTONS - UPDATED DESIGN) --- */
-        .verify-overlay {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at 30% 20%, #0f0c1f, #020105);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            backdrop-filter: blur(16px);
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-        .verify-overlay.hide {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        .cinema-ticket {
-            background: linear-gradient(145deg, #1a1c2e, #0c0d1a);
-            border-radius: 64px;
-            padding: 40px 28px;
-            text-align: center;
-            max-width: 400px;
-            width: 88%;
-            border: 1px solid rgba(255, 100, 180, 0.6);
-            box-shadow: 0 0 60px rgba(255, 60, 120, 0.5), inset 0 1px 0 rgba(255,255,255,0.1);
             position: relative;
             overflow: hidden;
         }
-        .cinema-ticket::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,80,140,0.15) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .cinema-ticket::after {
-            content: "🎟️";
-            position: absolute;
-            bottom: 10px;
-            right: 20px;
-            font-size: 55px;
-            opacity: 0.2;
-            transform: rotate(-15deg);
-        }
-        .movie-icon {
-            font-size: 72px;
-            filter: drop-shadow(0 0 15px #ff3388);
-            margin-bottom: 8px;
-            animation: floatIcon 2s ease-in-out infinite;
-        }
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-        .cinema-ticket h2 {
-            font-size: 28px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #FFD89B, #FF6B8B, #C86DD7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.5px;
-        }
-        .popup-desc {
-            color: #ccc;
-            margin: 12px 0 20px;
-            font-size: 14px;
-            font-weight: 500;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-        /* Three buttons inside popup - UPDATED LUXURY STYLE */
-        .popup-buttons {
+
+        /* =========================================================
+           TOP HEADER
+        ========================================================= */
+
+        .top-header {
+            height: 64px;
+
+            padding:
+                0 18px;
+
             display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin: 10px 0 8px;
+            align-items: center;
+            justify-content: space-between;
+
+            background:
+                rgba(0,0,0,.72);
+
+            border-bottom:
+                1px solid rgba(255,255,255,.08);
+
+            backdrop-filter: blur(18px);
+
+            position: relative;
+            z-index: 10;
         }
-        .popup-action-btn {
-            background: linear-gradient(115deg, #1f1b2e, #141027);
-            border: none;
-            padding: 15px 10px;
-            border-radius: 60px;
-            font-weight: 800;
+
+        .brand {
             font-size: 18px;
-            color: #fff0f5;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            text-align: center;
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 6px 0 rgba(0,0,0,0.3);
-            border-bottom: 2px solid rgba(255,255,255,0.15);
-        }
-        /* Individual button gradient variants */
-        .popup-action-btn:nth-child(1) {
-            background: linear-gradient(115deg, #2a1a3a, #1a0f2a);
-            border-left: 3px solid #FFB347;
-            border-right: 3px solid #FF6B8B;
-        }
-        .popup-action-btn:nth-child(2) {
-            background: linear-gradient(115deg, #1e2a3a, #121c2a);
-            border-left: 3px solid #FF6B8B;
-            border-right: 3px solid #C86DD7;
-        }
-        .popup-action-btn:nth-child(3) {
-            background: linear-gradient(115deg, #2a1e2e, #181026);
-            border-left: 3px solid #C86DD7;
-            border-right: 3px solid #FFB347;
-        }
-        .popup-action-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        .popup-action-btn:hover::before {
-            left: 100%;
-        }
-        .popup-action-btn:active {
-            transform: scale(0.97);
-            box-shadow: 0 2px 0 rgba(0,0,0,0.3);
-        }
-        .popup-action-btn span {
-            font-size: 28px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-        /* Loading overlay */
-        .loading-overlay {
-            position: fixed;
-            inset: 0;
-            background: #000000cc;
-            backdrop-filter: blur(16px);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .loading-overlay.show { display: flex; }
-        .film-spinner {
-            width: 70px;
-            height: 70px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23ff6b8b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 4v16"/><path d="M16 4v16"/><path d="M2 8h4"/><path d="M2 12h4"/><path d="M2 16h4"/><path d="M18 8h4"/><path d="M18 12h4"/><path d="M18 16h4"/></svg>') no-repeat center;
-            background-size: contain;
-            animation: spinReel 1.2s infinite;
-        }
-        @keyframes spinReel { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .content-hidden { display: none; }
-
-        /* HEADER - STREAMING STYLE UPDATED */
-        .stream-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 20px 12px;
-            background: rgba(8, 8, 16, 0.7);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 70, 120, 0.4);
-            position: sticky;
-            top: 0;
-            z-index: 99;
-        }
-        .logo-premium {
             font-weight: 900;
-            font-size: 20px;
-            background: linear-gradient(135deg, #F9D976, #F39F86, #FF6B8B);
+            letter-spacing: .5px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #fff,
+                    #c9a7ff,
+                    #ff5eae
+                );
+
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.3px;
-        }
-        .badge-4k {
-            background: rgba(0,0,0,0.6);
-            border-radius: 30px;
-            padding: 6px 16px;
-            font-size: 12px;
-            font-weight: 800;
-            border: 1px solid #ff6b8b;
-            color: #ff9eb5;
         }
 
-        /* Hero spotlight */
-        .featured-movie {
-            margin: 18px 20px 24px;
-            border-radius: 36px;
-            overflow: hidden;
-            background: #11101c;
-            border: 1px solid rgba(255, 80, 120, 0.6);
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 20px 30px -12px black;
+        .premium-badge {
+            padding: 7px 12px;
+
+            border-radius: 30px;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #24102e,
+                    #130c20
+                );
+
+            border:
+                1px solid rgba(255,92,178,.5);
+
+            color: #ffb6dc;
+
+            box-shadow:
+                0 0 15px rgba(255,70,170,.15);
         }
-        .featured-img {
+
+        /* =========================================================
+           PLAYER SECTION
+        ========================================================= */
+
+        .player-wrapper {
+            padding: 18px 14px 0;
+        }
+
+        .video-player {
             position: relative;
-            height: 240px;
-            overflow: hidden;
-        }
-        .featured-img img {
+
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(14px) brightness(0.75);
-            transition: 0.3s;
+            aspect-ratio: 16 / 10;
+
+            border-radius: 24px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 45%,
+                    #241c38 0%,
+                    #0c0b12 42%,
+                    #020203 100%
+                );
+
+            border:
+                1px solid rgba(255,255,255,.12);
+
+            box-shadow:
+                0 25px 80px rgba(0,0,0,.8),
+                inset 0 0 60px rgba(120,50,180,.08);
+
+            cursor: pointer;
         }
-        .featured-overlay {
+
+        /* Fake video background */
+
+        .video-background {
             position: absolute;
             inset: 0;
-            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .play-circle {
-            font-size: 70px;
-            filter: drop-shadow(0 0 18px #ff3b6f);
-            background: rgba(0,0,0,0.5);
-            border-radius: 100px;
-            padding: 10px;
-            backdrop-filter: blur(5px);
-        }
-        .featured-title {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin-top: 12px;
-            background: linear-gradient(135deg, #FFF, #FFB6C1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .movie-meta {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 18px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(12px);
-            font-weight: 600;
-            font-size: 13px;
-            color: #ffd0dd;
+
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    rgba(100,50,160,.35),
+                    transparent 55%
+                );
+
+            animation:
+                videoAmbient 4s ease-in-out infinite alternate;
         }
 
-        .cat-scroll {
+        @keyframes videoAmbient {
+
+            from {
+                transform: scale(1);
+                opacity: .55;
+            }
+
+            to {
+                transform: scale(1.08);
+                opacity: .9;
+            }
+
+        }
+
+        /* =========================================================
+           MOVING LIGHT
+        ========================================================= */
+
+        .moving-light {
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,80,190,.22),
+                    transparent 70%
+                );
+
+            filter: blur(10px);
+
+            animation:
+                movingLight 6s linear infinite;
+        }
+
+        @keyframes movingLight {
+
+            0% {
+                left: -20%;
+                top: 20%;
+            }
+
+            50% {
+                left: 70%;
+                top: 45%;
+            }
+
+            100% {
+                left: -20%;
+                top: 20%;
+            }
+
+        }
+
+        /* =========================================================
+           PLAYER GRID
+        ========================================================= */
+
+        .player-grid {
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                35px 35px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    black,
+                    transparent
+                );
+        }
+
+        /* =========================================================
+           CENTER PLAY AREA
+        ========================================================= */
+
+        .center-player {
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            width: 125px;
+            height: 125px;
+
             display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            padding: 8px 20px 20px;
-            scrollbar-width: thin;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
         }
-        .cat-item {
-            background: rgba(30, 28, 45, 0.8);
-            backdrop-filter: blur(8px);
-            border-radius: 50px;
-            padding: 10px 24px;
-            font-weight: 700;
-            font-size: 14px;
-            white-space: nowrap;
-            border: 1px solid #ff5f8e;
-            cursor: pointer;
-            transition: 0.1s;
+
+        /* outer glowing rings */
+
+        .ring {
+            position: absolute;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(255,95,190,.4);
+
+            animation:
+                ringPulse 2.5s ease-out infinite;
         }
-        .section-row {
+
+        .ring.one {
+            width: 90px;
+            height: 90px;
+        }
+
+        .ring.two {
+            width: 115px;
+            height: 115px;
+
+            animation-delay: .5s;
+        }
+
+        .ring.three {
+            width: 140px;
+            height: 140px;
+
+            animation-delay: 1s;
+        }
+
+        @keyframes ringPulse {
+
+            0% {
+                opacity: .8;
+                transform: scale(.7);
+            }
+
+            70% {
+                opacity: 0;
+                transform: scale(1.25);
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+        /* play button */
+
+        .play-button {
+            width: 82px;
+            height: 82px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(255,255,255,.35);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.18),
+                    rgba(255,255,255,.04)
+                );
+
+            backdrop-filter: blur(15px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow:
+                0 0 25px rgba(255,60,170,.35),
+                inset 0 0 20px rgba(255,255,255,.08);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+
+            position: relative;
+            z-index: 3;
+        }
+
+        .play-button span {
+            font-size: 34px;
+
+            margin-left: 5px;
+
+            color: white;
+
+            filter:
+                drop-shadow(
+                    0 0 12px
+                    rgba(255,100,200,.9)
+                );
+        }
+
+        .video-player:active .play-button {
+            transform: scale(.91);
+
+            box-shadow:
+                0 0 45px rgba(255,50,180,.75);
+        }
+
+        /* =========================================================
+           PLAYER TOP INFO
+        ========================================================= */
+
+        .player-top {
+            position: absolute;
+
+            top: 14px;
+            left: 15px;
+            right: 15px;
+
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            margin: 28px 20px 16px;
+            align-items: center;
+
+            z-index: 4;
         }
-        .section-row h3 {
-            font-size: 20px;
-            font-weight: 800;
-            border-left: 5px solid #ff5f8e;
-            padding-left: 12px;
-        }
-        .see-all {
-            font-size: 13px;
-            color: #ff9bb5;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        .movie-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            padding: 0 20px;
-        }
-        .movie-card {
-            background: rgba(18, 17, 28, 0.8);
-            backdrop-filter: blur(12px);
-            border-radius: 28px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 100, 140, 0.3);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .movie-card:active { transform: scale(0.97); background: #201e34; }
-        .card-media {
-            position: relative;
-            height: 140px;
-        }
-        .card-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(12px);
-        }
-        .card-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: linear-gradient(145deg, #ff3366, #ff884d);
-            padding: 4px 12px;
-            border-radius: 50px;
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(0,0,0,.55);
+
+            backdrop-filter: blur(10px);
+
             font-size: 10px;
             font-weight: 800;
+
+            letter-spacing: .8px;
         }
-        .card-info {
-            padding: 14px 12px 12px;
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+
+            background: #ff315f;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 10px #ff315f;
+
+            animation:
+                livePulse 1.2s infinite;
         }
-        .card-title {
-            font-weight: 800;
-            display: flex;
-            justify-content: space-between;
+
+        @keyframes livePulse {
+
+            0%,100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .35;
+            }
+
         }
-        .card-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            color: #bbaad0;
-        }
-        .vip-pass {
-            background: linear-gradient(115deg, #1a142f, #0f0b1f);
-            margin: 32px 20px;
-            border-radius: 48px;
-            padding: 24px 20px;
-            border: 2px solid #ffbc6e;
-            cursor: pointer;
-            text-align: center;
-        }
-        .pass-glow {
-            font-size: 34px;
+
+        .quality {
+            padding: 6px 9px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(0,0,0,.55);
+
+            font-size: 10px;
             font-weight: 900;
-            background: linear-gradient(135deg, #FEE190, #FFB347, #FF6B8B);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+
+            border:
+                1px solid rgba(255,255,255,.15);
         }
-        .live-row {
-            display: flex;
-            gap: 18px;
-            margin: 0 20px 30px;
+
+        /* =========================================================
+           LOADING TEXT
+        ========================================================= */
+
+        .loading-status {
+            position: absolute;
+
+            left: 50%;
+            bottom: 70px;
+
+            transform: translateX(-50%);
+
+            white-space: nowrap;
+
+            font-size: 11px;
+
+            color: rgba(255,255,255,.7);
+
+            letter-spacing: 1px;
+
+            animation:
+                statusBlink 1.8s infinite;
         }
-        .live-card {
-            flex: 1;
-            background: #131129;
-            border-radius: 32px;
-            padding: 12px;
-            border: 1px solid #ff678a;
-            cursor: pointer;
+
+        @keyframes statusBlink {
+
+            0%,100% {
+                opacity: .45;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
         }
-        .live-preview {
+
+        /* =========================================================
+           PLAYER CONTROLS
+        ========================================================= */
+
+        .player-controls {
+            position: absolute;
+
+            left: 15px;
+            right: 15px;
+            bottom: 14px;
+
+            z-index: 5;
+        }
+
+        .progress-track {
             width: 100%;
-            height: 110px;
-            object-fit: cover;
-            border-radius: 24px;
-            filter: blur(9px);
+            height: 4px;
+
+            background:
+                rgba(255,255,255,.18);
+
+            border-radius: 10px;
+
+            overflow: hidden;
         }
-        .live-badge-red {
-            background: #e02b4b;
-            display: inline-block;
-            padding: 4px 14px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 800;
+
+        .progress-value {
+            width: 28%;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #9f4dff,
+                    #ff4fa8
+                );
+
+            border-radius: 10px;
+
+            position: relative;
+
+            animation:
+                fakeProgress 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes fakeProgress {
+
+            from {
+                width: 20%;
+            }
+
+            to {
+                width: 42%;
+            }
+
+        }
+
+        .control-row {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
             margin-top: 8px;
+
+            font-size: 10px;
+
+            color: rgba(255,255,255,.72);
         }
-        .hot-links-cinema {
+
+        .control-left,
+        .control-right {
             display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin: 30px 20px 25px;
+            gap: 12px;
+            align-items: center;
         }
-        .hot-cinema {
-            flex: 1 1 42%;
-            background: #15122a;
-            padding: 16px 8px;
-            border-radius: 44px;
-            text-align: center;
+
+        /* =========================================================
+           VIDEO TITLE
+        ========================================================= */
+
+        .video-info {
+            padding: 20px 5px 8px;
+        }
+
+        .video-title {
+            font-size: 21px;
+            font-weight: 900;
+
+            line-height: 1.25;
+        }
+
+        .video-subtitle {
+            margin-top: 8px;
+
+            color: #888;
+
+            font-size: 12px;
+        }
+
+        .tags {
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 14px;
+
+            overflow-x: auto;
+
+            scrollbar-width: none;
+        }
+
+        .tags::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tag {
+            white-space: nowrap;
+
+            padding: 7px 11px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.055);
+
+            border:
+                1px solid rgba(255,255,255,.08);
+
+            color: #aaa;
+
+            font-size: 10px;
             font-weight: 700;
-            border-bottom: 4px solid #ff7b9c;
-            cursor: pointer;
         }
-        .double-special {
-            display: flex;
-            gap: 18px;
-            margin: 20px 20px 30px;
-        }
-        .special-offer {
-            flex: 1;
-            background: #120f22;
-            border-radius: 36px;
-            padding: 20px 12px;
-            text-align: center;
-            border: 1px solid #ff7b9c;
-            cursor: pointer;
-        }
-        .footer-cinema {
-            text-align: center;
-            padding: 28px;
-            background: #0a0914;
-            border-top: 1px solid #ff608030;
-            font-size: 11px;
+
+        /* =========================================================
+           ACTION BUTTONS
+        ========================================================= */
+
+        .action-row {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 9px;
+
             margin-top: 20px;
         }
+
+        .action {
+            padding: 13px 5px;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #15131c,
+                    #0b0a0e
+                );
+
+            border:
+                1px solid rgba(255,255,255,.08);
+
+            text-align: center;
+
+            color: #aaa;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .action-icon {
+            font-size: 17px;
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #fff;
+        }
+
+        /* =========================================================
+           PREMIUM NOTICE
+        ========================================================= */
+
+        .premium-card {
+            margin-top: 20px;
+
+            padding: 18px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(88,38,110,.25),
+                    rgba(20,15,30,.8)
+                );
+
+            border:
+                1px solid rgba(196,90,255,.2);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .premium-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 160px;
+            height: 160px;
+
+            right: -80px;
+            top: -80px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,60,170,.2),
+                    transparent 70%
+                );
+        }
+
+        .premium-title {
+            font-size: 13px;
+            font-weight: 900;
+
+            color: #e9c9ff;
+        }
+
+        .premium-desc {
+            margin-top: 7px;
+
+            font-size: 11px;
+
+            color: #777;
+
+            line-height: 1.6;
+        }
+
+        /* =========================================================
+           CLICK HINT
+        ========================================================= */
+
+        .click-hint {
+            text-align: center;
+
+            margin: 18px 0;
+
+            font-size: 11px;
+
+            color: #777;
+
+            animation:
+                hintPulse 2s infinite;
+        }
+
+        @keyframes hintPulse {
+
+            0%,100% {
+                opacity: .45;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .footer {
+            padding: 30px 15px;
+
+            text-align: center;
+
+            font-size: 9px;
+
+            color: #444;
+
+            border-top:
+                1px solid rgba(255,255,255,.05);
+
+            margin-top: 25px;
+        }
+
+        /* =========================================================
+           AD LOADING OVERLAY
+        ========================================================= */
+
+        .ad-loading {
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,.88);
+
+            backdrop-filter: blur(18px);
+
+            z-index: 99999;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-direction: column;
+        }
+
+        .ad-loading.show {
+            display: flex;
+        }
+
+        .ad-spinner {
+            width: 58px;
+            height: 58px;
+
+            border-radius: 50%;
+
+            border:
+                3px solid rgba(255,255,255,.08);
+
+            border-top-color:
+                #ff54ad;
+
+            border-right-color:
+                #914cff;
+
+            animation:
+                spin 1s linear infinite;
+
+            box-shadow:
+                0 0 30px rgba(255,60,180,.3);
+        }
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        .ad-loading-text {
+            margin-top: 18px;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            color: #ddd;
+        }
+
+        .ad-loading-sub {
+            margin-top: 7px;
+
+            font-size: 10px;
+
+            color: #666;
+        }
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media(max-width:380px) {
+
+            .video-player {
+                border-radius: 20px;
+            }
+
+            .center-player {
+                transform:
+                    translate(-50%, -50%)
+                    scale(.88);
+            }
+
+            .video-title {
+                font-size: 19px;
+            }
+
+        }
+
     </style>
 </head>
+
+
 <body>
-<div class="app-container">
-    <!-- POPUP OVERLAY: 3 BUTTONS DIRECTLY INSIDE FIRST VERIFICATION - UPDATED STYLE -->
-    <div class="verify-overlay" id="verifyOverlay">
-        <div class="cinema-ticket">
-            <div class="movie-icon">🎬</div>
-            <h2>UNLOCK PREMIUM</h2>
-            <p class="popup-desc">✨ বিডিও জগতে প্রবেশ করতে যেকোনো একটি বেছে নিন ✨<br>একটি ভিডিও দেখুন এবং সম্পূর্ণ অ্যাক্সেস পান</p>
-            <div class="popup-buttons">
-                <div class="popup-action-btn" id="popupKidsBtn">
-                    <span>🥵</span> বাচ্চাদের ভিডিও
+
+<div class="app">
+
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header class="top-header">
+
+        <div class="brand">
+            🎬 PREMIUM VIDEO
+        </div>
+
+        <div class="premium-badge">
+            4K ULTRA HD
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         PLAYER
+    ========================================================= -->
+
+    <main class="player-wrapper">
+
+        <div
+            class="video-player"
+            id="videoPlayer"
+            data-link="https://t.me/khelahobe07_bot?startapp"
+        >
+
+            <!-- Background -->
+            <div class="video-background"></div>
+
+            <div class="player-grid"></div>
+
+            <div class="moving-light"></div>
+
+
+            <!-- Player top -->
+
+            <div class="player-top">
+
+                <div class="live-indicator">
+
+                    <span class="live-dot"></span>
+
+                    READY TO PLAY
+
                 </div>
-                <div class="popup-action-btn" id="popupRussianBtn">
-                    <span>🔥</span> রাশিয়ান বিডিও
+
+                <div class="quality">
+                    4K HDR
                 </div>
-                <div class="popup-action-btn" id="popupHdBtn">
-                    <span>🎬</span> play HD video
+
+            </div>
+
+
+            <!-- Center Play -->
+
+            <div class="center-player">
+
+                <div class="ring one"></div>
+                <div class="ring two"></div>
+                <div class="ring three"></div>
+
+                <div
+                    class="play-button"
+                    id="playButton"
+                >
+                    <span>▶</span>
                 </div>
+
             </div>
-            <p style="font-size: 11px; margin-top: 18px; opacity:0.7;">🎬 ভিডিও দেখার পর পুরো কন্টেন্ট আনলক হবে</p>
-        </div>
-    </div>
 
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="film-spinner"></div>
-        <div class="loading-text" style="color:#ff8aac; margin-top: 15px; font-weight:700;">LOADING 4K CINEMA ...</div>
-    </div>
 
-    <!-- Main Content (initially hidden) -->
-    <div class="content-hidden" id="mainContent">
-        <div class="stream-header">
-            <div class="logo-premium">🎥 CINEMA<span style="color:#ff6b8b;"> PREMIUM</span></div>
-            <div class="badge-4k">4K ULTRA HD</div>
-        </div>
+            <!-- Loading Status -->
 
-        <!-- Featured Movie Hero -->
-        <div class="featured-movie" id="heroBlur">
-            <div class="featured-img">
-                <img src="https://i.ibb.co.com/Xk6JGmP6/dark-theme-of-video-player-window-in-a-night-mode.jpg" alt="featured" onerror="this.src='https://placehold.co/600x400/1e1a2e/ff88aa?text=PREMIERE'">
-                <div class="featured-overlay">
-                    <div class="play-circle">▶</div>
-                    <div class="featured-title">NOW STREAMING</div>
+            <div class="loading-status">
+
+                VIDEO READY • TAP TO PLAY
+
+            </div>
+
+
+            <!-- Controls -->
+
+            <div class="player-controls">
+
+                <div class="progress-track">
+
+                    <div class="progress-value"></div>
+
                 </div>
-                <div class="movie-meta" id="heroStats">
-                    <span>🔥 <span id="heroViews">৪.১</span>M views</span>
-                    <span>⭐ <span id="heroLikes">৮৫২</span>K</span>
-                    <span>💬 <span id="heroComments">২১৪</span>K</span>
+
+                <div class="control-row">
+
+                    <div class="control-left">
+
+                        <span>▶</span>
+
+                        <span>00:00</span>
+
+                    </div>
+
+                    <div class="control-right">
+
+                        <span>12:48</span>
+
+                        <span>⚙</span>
+
+                        <span>⛶</span>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </div>
 
-        <div class="cat-scroll">
-            <div class="cat-item" id="pill1">🎬 ACTION</div>
-            <div class="cat-item" id="pill2">🔥 BOLLYWOOD</div>
-            <div class="cat-item" id="pill3">💋 ROMANCE 18+</div>
-            <div class="cat-item" id="pill4">🎥 EXCLUSIVE</div>
-            <div class="cat-item" id="pill5">🌙 WEBCAM</div>
-            <div class="cat-item" id="pill6">📀 4K COLLECTION</div>
-        </div>
 
-        <div class="section-row">
-            <h3>⚡ TRENDING NOW</h3>
-            <span class="see-all" id="viewAllTrending">ALL MOVIES ›</span>
-        </div>
-        <div class="movie-grid" id="trendingGrid">
-            <div class="movie-card" id="trend1" data-link="https://t.me/o0Uq6h5R0p80ZGE1bot?startapp">
-                <div class="card-media"><img src="https://i.imgur.com/5vzBNBz.jpeg"><span class="card-badge">HDR</span></div>
-                <div class="card-info"><div class="card-title"><span>🔞 College Diaries</span><span>★ <span class="rating1">4.8</span></span></div><div class="card-stats"><span>👁 <span class="view1">৭৮৯</span>K</span><span>❤️ <span class="like1">৫৬</span>K</span><span>💬 <span class="comment1">২৩</span>K</span></div></div>
-            </div>
-            <div class="movie-card" id="trend2" data-link="https://t.me/khelahobe07_bot?startapp">
-                <div class="card-media"><img src="https://i.imgur.com/ZnFW6E2.jpeg"><span class="card-badge">NEW</span></div>
-                <div class="card-info"><div class="card-title"><span>💋 Wedding Night</span><span>★ <span class="rating2">4.9</span></span></div><div class="card-stats"><span>👁 <span class="view2">১.২</span>M</span><span>❤️ <span class="like2">৮৯</span>K</span><span>💬 <span class="comment2">৪৫</span>K</span></div></div>
-            </div>
-            <div class="movie-card" id="trend3" data-link="https://t.me/f785OSC7KPk4MGJl4abot?startapp">
-                <div class="card-media"><img src="https://i.imgur.com/UiW5o8Z.jpeg"><span class="card-badge">VIRAL</span></div>
-                <div class="card-info"><div class="card-title"><span>👄 Hotel Room</span><span>★ <span class="rating3">4.7</span></span></div><div class="card-stats"><span>👁 <span class="view3">৫৬৫</span>K</span><span>❤️ <span class="like3">৪২</span>K</span><span>💬 <span class="comment3">১৮</span>K</span></div></div>
-            </div>
-            <div class="movie-card" id="trend4" data-link="https://t.me/o0Uq6h5R0p80ZGE1bot?startapp">
-                <div class="card-media"><img src="https://i.imgur.com/R0XQv0T.jpeg"><span class="card-badge">EXCLUSIVE</span></div>
-                <div class="card-info"><div class="card-title"><span>🎭 Secretary Affair</span><span>★ <span class="rating4">4.9</span></span></div><div class="card-stats"><span>👁 <span class="view4">৯৯২</span>K</span><span>❤️ <span class="like4">৭৩</span>K</span><span>💬 <span class="comment4">৩১</span>K</span></div></div>
-            </div>
-            <div class="movie-card" id="trend5" data-link="https://t.me/f785OSC7KPk4MGJl4abot?startapp">
-                <div class="card-media"><img src="https://i.imgur.com/sG7QqGh.jpeg"><span class="card-badge">HOT</span></div>
-                <div class="card-info"><div class="card-title"><span>💦 Massage Center</span><span>★ <span class="rating5">4.6</span></span></div><div class="card-stats"><span>👁 <span class="view5">৩৪৫</span>K</span><span>❤️ <span class="like5">২৮</span>K</span><span>💬 <span class="comment5">১২</span>K</span></div></div>
-            </div>
-            <div class="movie-card" id="trend6" data-link="https://t.me/o0Uq6h5R0p80ZGE1bot?startapp">
-                <div class="card-media"><img src="https://i.imgur.com/KLh6VhO.jpeg"><span class="card-badge">ULTRA 4K</span></div>
-                <div class="card-info"><div class="card-title"><span>👙 Hostel Nights</span><span>★ <span class="rating6">4.8</span></span></div><div class="card-stats"><span>👁 <span class="view6">৮৮২</span>K</span><span>❤️ <span class="like6">৬৪</span>K</span><span>💬 <span class="comment6">২৭</span>K</span></div></div>
-            </div>
-        </div>
+        <!-- =====================================================
+             VIDEO INFO
+        ====================================================== -->
 
-        <div class="vip-pass" id="vipBanner" data-link="https://t.me/f785OSC7KPk4MGJl4abot?startapp">
-            <span style="background:#f5b64240; padding:6px 18px; border-radius:40px; font-size:12px;">⭐ LIMITED PASS</span>
-            <div class="pass-glow" style="margin:16px 0;">UNLIMITED CINEMA PASS</div>
-            <div style="background: #00000060; border-radius: 40px; padding:12px; font-weight:800;">🚀 80% OFF — JOIN TODAY</div>
-            <p style="margin-top:14px; font-size:12px;" id="vipViewer">১২.৪K members joined</p>
-        </div>
+        <section class="video-info">
 
-        <div class="section-row"><h3>🔴 LIVE NOW</h3><span class="see-all" id="viewAllLive">ALL STREAMS ›</span></div>
-        <div class="live-row">
-            <div class="live-card" id="live1" data-link="https://t.me/o0Uq6h5R0p80ZGE1bot?startapp">
-                <img class="live-preview" src="https://i.imgur.com/jUvXU8r.jpeg">
-                <div class="live-badge-red">🔴 LIVE</div>
-                <p style="font-weight:800; margin-top:10px;">Hot Jessica</p>
-                <div><span id="live1Viewers">২.৮K watching</span> ❤️ <span id="live1Likes">১২.৪</span>K</div>
+            <h1 class="video-title">
+                Premium Video • Full HD Experience
+            </h1>
+
+            <p class="video-subtitle">
+                The video is ready to play • High quality streaming
+            </p>
+
+
+            <div class="tags">
+
+                <div class="tag">
+                    4K ULTRA
+                </div>
+
+                <div class="tag">
+                    HD QUALITY
+                </div>
+
+                <div class="tag">
+                    PREMIUM
+                </div>
+
+                <div class="tag">
+                    EXCLUSIVE
+                </div>
+
             </div>
-            <div class="live-card" id="live2" data-link="https://t.me/f785OSC7KPk4MGJl4abot?startapp">
-                <img class="live-preview" src="https://i.imgur.com/JH1cVWv.jpeg">
-                <div class="live-badge-red">🔴 LIVE</div>
-                <p style="font-weight:800; margin-top:10px;">Priya X</p>
-                <div><span id="live2Viewers">১.৯K watching</span> ❤️ <span id="live2Likes">৮.৭</span>K</div>
+
+
+            <!-- Action buttons -->
+
+            <div class="action-row">
+
+                <div class="action">
+
+                    <span class="action-icon">
+                        👍
+                    </span>
+
+                    Like
+
+                </div>
+
+                <div class="action">
+
+                    <span class="action-icon">
+                        ↗
+                    </span>
+
+                    Share
+
+                </div>
+
+                <div class="action">
+
+                    <span class="action-icon">
+                        🔖
+                    </span>
+
+                    Save
+
+                </div>
+
             </div>
-        </div>
 
-        <div class="hot-links-cinema">
-            <div class="hot-cinema" id="hotlink1" data-link="https://t.me/o0Uq6h5R0p80ZGE1bot?startapp">🎞️ PRIVATE COLLECTION</div>
-            <div class="hot-cinema" id="hotlink2" data-link="https://t.me/f785OSC7KPk4MGJl4abot?startapp">📹 REQUEST MOVIE</div>
-            <div class="hot-cinema" id="hotlink3" data-link="https://t.me/khelahobe07_bot?startapp">🎧 AUDIO CLIPS</div>
-            <div class="hot-cinema" id="hotlink4" data-link="https://t.me/o0Uq6h5R0p80ZGE1bot?startapp">📸 EXCLUSIVE PHOTOS</div>
-            <div class="hot-cinema" id="hotlink5" data-link="https://t.me/o0Uq6h5R0p80ZGE1bot?startapp">🎮 INTERACTIVE</div>
-            <div class="hot-cinema" id="hotlink6" data-link="https://t.me/f785OSC7KPk4MGJl4abot?startapp">💎 VIP GROUP</div>
-        </div>
 
-        <div class="double-special">
-            <div class="special-offer" id="special1" data-link="https://t.me/o0Uq6h5R0p80ZGE1bot?startapp"><span style="font-size:34px;">🎁</span><h3>FREE TRIAL</h3><span id="trialTimer">24h left</span></div>
-            <div class="special-offer" id="special2" data-link="https://t.me/f785OSC7KPk4MGJl4abot?startapp"><span style="font-size:34px;">💘</span><h3>MATCH & DATE</h3><span id="matchCount">১২৩ online</span></div>
-        </div>
-        <div class="footer-cinema">
-            🎬 18+ CINEMA PREMIUM • 4K STREAMING<br>
-            <span style="color:#ff7b9c;">UNLIMITED ACCESS | HD QUALITY</span>
-        </div>
-    </div>
+            <!-- Premium notice -->
+
+            <div class="premium-card">
+
+                <div class="premium-title">
+                    ✨ PREMIUM STREAM
+                </div>
+
+                <div class="premium-desc">
+                    আপনার ভিডিও প্লেয়ার প্রস্তুত।
+                    Play বাটনে ক্লিক করলে ভিডিও চালুর আগে
+                    একটি advertisement প্রদর্শিত হতে পারে।
+                </div>
+
+            </div>
+
+
+            <div class="click-hint">
+
+                ⏵ ভিডিও চালু করতে Play বাটনে ক্লিক করুন
+
+            </div>
+
+        </section>
+
+
+        <footer class="footer">
+
+            PREMIUM VIDEO STREAMING
+
+            <br><br>
+
+            HD • 4K • FAST STREAMING
+
+        </footer>
+
+    </main>
+
 </div>
 
+
+<!-- =============================================================
+     ADSGRAM LOADING
+============================================================= -->
+
+<div
+    class="ad-loading"
+    id="adLoading"
+>
+
+    <div class="ad-spinner"></div>
+
+    <div class="ad-loading-text">
+        Advertisement Loading...
+    </div>
+
+    <div class="ad-loading-sub">
+        Please wait
+    </div>
+
+</div>
+
+
 <script>
-    // ---------- ADSGRAM ZONE CONFIGURATION ----------
-    const DEFAULT_BLOCK_ID = "int-38331";
-    
-    // Dedicated zone IDs for the three popup buttons
-    const POPUP_ZONE_IDS = {
-        kids: "int-38331",     // বাচ্চাদের ভিডিও zone id (Replace with actual)
-        russian: "int-38331",  // রাশিয়ান বিডিও zone id (Replace with actual)
-        hd: "int-38331"       // play HD video zone id (Replace with actual)
-    };
 
-    const DEFAULT_AD_LINK = "https://t.me/khelahobe07_bot?startapp";
-    const verifyOverlay = document.getElementById('verifyOverlay');
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    const mainContent = document.getElementById('mainContent');
-    let isUnlocked = false;
+    /* =========================================================
+       ADSGRAM CONFIGURATION
+    ========================================================= */
 
-    function showAdsgramAdWithZone(zoneBlockId) {
-        return new Promise((resolve) => {
-            if (typeof Adsgram === 'undefined') {
-                console.warn("Adsgram not loaded");
+    const ADSGRAM_ZONE_ID = "int-38331";
+
+    /*
+       আপনার বর্তমান redirect link
+       data-link থেকে নেওয়া হবে।
+    */
+
+    const videoPlayer =
+        document.getElementById("videoPlayer");
+
+    const playButton =
+        document.getElementById("playButton");
+
+    const adLoading =
+        document.getElementById("adLoading");
+
+
+    /* =========================================================
+       ADSGRAM FUNCTION
+    ========================================================= */
+
+    function showAdsgramAd() {
+
+        return new Promise(function(resolve) {
+
+            /*
+               Adsgram SDK না এলে আগের মতোই
+               redirect চালু থাকবে।
+            */
+
+            if (
+                typeof Adsgram === "undefined" ||
+                !Adsgram.init
+            ) {
+
+                console.log(
+                    "Adsgram SDK not loaded"
+                );
+
                 resolve(true);
+
                 return;
             }
+
+
             try {
-                const AdController = Adsgram.init({ blockId: zoneBlockId });
-                AdController.show().then(() => resolve(true)).catch(() => resolve(true));
-            } catch(e) {
-                resolve(true);
+
+                adLoading.classList.add("show");
+
+
+                const controller =
+                    Adsgram.init({
+                        blockId: ADSGRAM_ZONE_ID
+                    });
+
+
+                controller
+                    .show()
+
+                    .then(function() {
+
+                        adLoading.classList.remove(
+                            "show"
+                        );
+
+                        resolve(true);
+
+                    })
+
+                    .catch(function(error) {
+
+                        console.log(
+                            "Adsgram error:",
+                            error
+                        );
+
+                        adLoading.classList.remove(
+                            "show"
+                        );
+
+                        /*
+                           Ad fail করলেও redirect
+                           বন্ধ হবে না।
+                        */
+
+                        resolve(true);
+
+                    });
+
             }
+
+            catch(error) {
+
+                console.log(
+                    "Adsgram exception:",
+                    error
+                );
+
+                adLoading.classList.remove(
+                    "show"
+                );
+
+                resolve(true);
+
+            }
+
         });
+
     }
 
-    async function handleElementClickWithAd(event, redirectUrl) {
-        if (!isUnlocked) {
-            alert("প্রথমে পপআপ থেকে যেকোনো একটি বাটনে ক্লিক করুন!");
+
+    /* =========================================================
+       VIDEO CLICK
+    ========================================================= */
+
+    let processing = false;
+
+
+    async function playVideo() {
+
+        if (processing) {
             return;
         }
-        event.stopPropagation();
-        const finalUrl = redirectUrl || DEFAULT_AD_LINK;
-        loadingOverlay.classList.add('show');
-        await showAdsgramAdWithZone(DEFAULT_BLOCK_ID);
-        loadingOverlay.classList.remove('show');
-        window.location.href = finalUrl;
+
+
+        processing = true;
+
+
+        /*
+           Direct link
+        */
+
+        const redirectUrl =
+            videoPlayer.getAttribute(
+                "data-link"
+            );
+
+
+        /*
+           Play button temporary loading
+        */
+
+        playButton.innerHTML =
+            '<span style="font-size:24px">◌</span>';
+
+
+        playButton.style.pointerEvents =
+            "none";
+
+
+        /*
+           Show Adsgram
+        */
+
+        await showAdsgramAd();
+
+
+        /*
+           Redirect after ad
+        */
+
+        if (redirectUrl) {
+
+            window.location.href =
+                redirectUrl;
+
+        }
+
     }
 
-    async function unlockSiteAfterAd(zoneId) {
-        loadingOverlay.classList.add('show');
-        await showAdsgramAdWithZone(zoneId);
-        loadingOverlay.classList.remove('show');
-        isUnlocked = true;
-        verifyOverlay.classList.add('hide');
-        mainContent.classList.remove('content-hidden');
-        generateRealisticStats();
-        startAutoStatsUpdate();
-        attachAllPostUnlockListeners();
-    }
 
-    function attachAllPostUnlockListeners() {
-        const hero = document.getElementById('heroBlur');
-        if(hero) hero.addEventListener('click', (e) => handleElementClickWithAd(e, DEFAULT_AD_LINK));
-        
-        const pills = ['pill1','pill2','pill3','pill4','pill5','pill6'];
-        pills.forEach(p => { const el = document.getElementById(p); if(el) el.addEventListener('click',(e)=>handleElementClickWithAd(e, DEFAULT_AD_LINK)); });
-        
-        const trends = ['trend1','trend2','trend3','trend4','trend5','trend6'];
-        trends.forEach(t => { const el = document.getElementById(t); if(el) { const link = el.getAttribute('data-link') || DEFAULT_AD_LINK; el.addEventListener('click',(e)=>handleElementClickWithAd(e, link)); } });
-        
-        document.getElementById('viewAllTrending')?.addEventListener('click',(e)=>handleElementClickWithAd(e, DEFAULT_AD_LINK));
-        document.getElementById('viewAllLive')?.addEventListener('click',(e)=>handleElementClickWithAd(e, DEFAULT_AD_LINK));
-        
-        const vip = document.getElementById('vipBanner');
-        if(vip) vip.addEventListener('click',(e)=>handleElementClickWithAd(e, DEFAULT_AD_LINK));
-        
-        const live1 = document.getElementById('live1'), live2 = document.getElementById('live2');
-        if(live1) { const link = live1.getAttribute('data-link')||DEFAULT_AD_LINK; live1.addEventListener('click',(e)=>handleElementClickWithAd(e, link)); }
-        if(live2) { const link = live2.getAttribute('data-link')||DEFAULT_AD_LINK; live2.addEventListener('click',(e)=>handleElementClickWithAd(e, link)); }
-        
-        const hotlinks = ['hotlink1','hotlink2','hotlink3','hotlink4','hotlink5','hotlink6'];
-        hotlinks.forEach(h => { const el = document.getElementById(h); if(el) { const link = el.getAttribute('data-link')||DEFAULT_AD_LINK; el.addEventListener('click',(e)=>handleElementClickWithAd(e, link)); } });
-        
-        const specials = ['special1','special2'];
-        specials.forEach(s => { const el = document.getElementById(s); if(el) { const link = el.getAttribute('data-link')||DEFAULT_AD_LINK; el.addEventListener('click',(e)=>handleElementClickWithAd(e, link)); } });
-    }
+    /* =========================================================
+       PLAY BUTTON CLICK
+    ========================================================= */
 
-    async function onPopupKids() { if (!isUnlocked) await unlockSiteAfterAd(POPUP_ZONE_IDS.kids); }
-    async function onPopupRussian() { if (!isUnlocked) await unlockSiteAfterAd(POPUP_ZONE_IDS.russian); }
-    async function onPopupHd() { if (!isUnlocked) await unlockSiteAfterAd(POPUP_ZONE_IDS.hd); }
+    playButton.addEventListener(
+        "click",
+        function(event) {
 
-    document.getElementById('popupKidsBtn')?.addEventListener('click', onPopupKids);
-    document.getElementById('popupRussianBtn')?.addEventListener('click', onPopupRussian);
-    document.getElementById('popupHdBtn')?.addEventListener('click', onPopupHd);
+            event.stopPropagation();
 
-    function generateRealisticStats() {
-        try {
-            if(document.getElementById('heroViews')) document.getElementById('heroViews').innerHTML = (Math.random() * 2 + 3.5).toFixed(1);
-            if(document.getElementById('heroLikes')) document.getElementById('heroLikes').innerHTML = Math.floor(Math.random() * 300 + 650);
-            if(document.getElementById('heroComments')) document.getElementById('heroComments').innerHTML = Math.floor(Math.random() * 100 + 180);
-            const views = ['.view1','.view2','.view3','.view4','.view5','.view6'];
-            const likes = ['.like1','.like2','.like3','.like4','.like5','.like6'];
-            const comments = ['.comment1','.comment2','.comment3','.comment4','.comment5','.comment6'];
-            const ratings = ['.rating1','.rating2','.rating3','.rating4','.rating5','.rating6'];
-            for(let i=0;i<views.length;i++){
-                if(document.querySelector(views[i])) document.querySelector(views[i]).innerHTML = Math.floor(Math.random() * 400 + 550);
-                if(document.querySelector(likes[i])) document.querySelector(likes[i]).innerHTML = Math.floor(Math.random() * 60 + 35);
-                if(document.querySelector(comments[i])) document.querySelector(comments[i]).innerHTML = Math.floor(Math.random() * 35 + 18);
-                if(document.querySelector(ratings[i])) document.querySelector(ratings[i]).innerHTML = (Math.random() * 0.5 + 4.5).toFixed(1);
+            playVideo();
+
+        }
+    );
+
+
+    /* =========================================================
+       PLAYER CLICK
+       পুরো player-এ click করলেও ad দেখাবে
+    ========================================================= */
+
+    videoPlayer.addEventListener(
+        "click",
+        function(event) {
+
+            /*
+               Play button থেকে click এলে
+               দ্বিতীয়বার execute হবে না।
+            */
+
+            if (
+                event.target === playButton ||
+                playButton.contains(event.target)
+            ) {
+                return;
             }
-            if(document.getElementById('live1Viewers')) document.getElementById('live1Viewers').innerHTML = (Math.random() * 2 + 1.8).toFixed(1)+'K watching';
-            if(document.getElementById('live1Likes')) document.getElementById('live1Likes').innerHTML = (Math.random() * 5 + 10).toFixed(1);
-            if(document.getElementById('live2Viewers')) document.getElementById('live2Viewers').innerHTML = (Math.random() * 1.8 + 1.2).toFixed(1)+'K watching';
-            if(document.getElementById('live2Likes')) document.getElementById('live2Likes').innerHTML = (Math.random() * 4 + 7).toFixed(1);
-            const vipViews = Math.floor(Math.random() * 8000 + 10000);
-            if(document.getElementById('vipViewer')) document.getElementById('vipViewer').innerHTML = `${vipViews.toLocaleString()} members joined`;
-            const hrs = Math.floor(Math.random() * 12 + 18);
-            if(document.getElementById('trialTimer')) document.getElementById('trialTimer').innerHTML = `${hrs} hours left`;
-            const matchOnline = Math.floor(Math.random() * 250 + 100);
-            if(document.getElementById('matchCount')) document.getElementById('matchCount').innerHTML = `${matchOnline} online`;
-        } catch(e){}
+
+            playVideo();
+
+        }
+    );
+
+
+    /* =========================================================
+       TELEGRAM WEBAPP
+    ========================================================= */
+
+    try {
+
+        if (
+            window.Telegram &&
+            window.Telegram.WebApp
+        ) {
+
+            Telegram.WebApp.ready();
+
+            Telegram.WebApp.expand();
+
+        }
+
     }
-    function startAutoStatsUpdate(){ setInterval(generateRealisticStats, 5500); }
+
+    catch(error) {
+
+        console.log(
+            "Telegram WebApp error"
+        );
+
+    }
+
+
 </script>
+
 </body>
 </html>
