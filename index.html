@@ -1,1469 +1,1755 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-
-    <!-- ================= AUTO REDIRECT : UNCHANGED ================= -->
-    <script type="text/javascript">
-        setTimeout(function() {
-            window.location.href = "https://t.me/arning_hubbot?startapp";
-        }, 8000);
-    </script>
-
-    <!-- ================= AUTO ADSGRAM : UNCHANGED ================= -->
-    <script>
-        window.onload = function() {
-            if (typeof Adsgram !== "undefined") {
-                window.Adsgram.init({
-                    blockId: "int-38331"
-                }).show();
-            }
-        };
-    </script>
-
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width,
-                   initial-scale=1.0,
-                   maximum-scale=1.0,
-                   user-scalable=no,
-                   viewport-fit=cover">
-
-    <title>Premium Video Player</title>
-
-    <!-- Telegram -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Earnova | Earn &amp; Rewards</title>
+    
+    <!-- Telegram WebApp Script -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-    <!-- Adsgram -->
+    
+    <!-- AdsGram Ad Script -->
     <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
-
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
-
-        /* =========================================================
-           GLOBAL
-        ========================================================= */
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html,
-        body {
-            width: 100%;
-            min-height: 100%;
-            background: #000;
         }
 
         body {
-            font-family:
-                Inter,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
-
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        button {
-            font-family: inherit;
-        }
-
-        /* =========================================================
-           APP
-        ========================================================= */
-
-        .app {
-            width: 100%;
-            max-width: 600px;
+            font-family: 'Inter', 'Hind Siliguri', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #ffffff;
             min-height: 100vh;
-            margin: auto;
-
-            background:
-                radial-gradient(
-                    circle at 50% 15%,
-                    rgba(91, 34, 130, .25),
-                    transparent 35%
-                ),
-                linear-gradient(
-                    180deg,
-                    #050505 0%,
-                    #020204 50%,
-                    #000 100%
-                );
-
-            position: relative;
-            overflow: hidden;
+            padding-bottom: 80px;
         }
 
-        /* =========================================================
-           TOP HEADER
-        ========================================================= */
+        /* Animated Gradient Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(125deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
 
-        .top-header {
-            height: 64px;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-            padding:
-                0 18px;
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
 
+        .glass-card:hover {
+            border-color: rgba(255, 140, 0, 0.5);
+            box-shadow: 0 8px 40px rgba(255, 140, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Premium Gradient Button */
+        .btn-premium {
+            background: linear-gradient(135deg, #ff8c00, #ff2e00);
+            border: none;
+            color: white;
+            font-weight: 700;
+            border-radius: 60px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+        }
+
+        .btn-premium:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.5);
+        }
+
+        .btn-premium:active {
+            transform: scale(0.98);
+        }
+
+        /* Secondary Button */
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 60px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 140, 0, 0.5);
+        }
+
+        /* Balance Card Special */
+        .balance-card {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.9), rgba(255, 46, 0, 0.9));
+            backdrop-filter: blur(10px);
+            border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.3);
+        }
+
+        /* Stat Cards */
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 140, 0, 0.3);
+        }
+
+        /* Task Card */
+        .task-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .task-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 140, 0, 0.4);
+            transform: translateX(5px);
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: rgba(15, 12, 41, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-item {
+            transition: all 0.3s ease;
+            border-radius: 30px;
+            padding: 8px 0;
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, #ff8c00, #ff2e00);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+        }
+
+        .nav-item.active i, 
+        .nav-item.active span {
+            color: white !important;
+        }
+
+        /* Input Fields */
+        .input-premium {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 60px;
+            padding: 14px 20px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .input-premium:focus {
+            outline: none;
+            border-color: #ff8c00;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.2);
+        }
+
+        .input-premium::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        select.input-premium option {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #ff8c00, #ff2e00);
+            border-radius: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        /* Ad Watching Status */
+        .ad-status {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff8c00, #ff2e00);
+            color: white;
+            text-align: center;
+            padding: 14px;
+            border-radius: 60px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 5px 25px rgba(255, 140, 0, 0.4);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading Spinner */
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 140, 0, 0.2);
+            border-top-color: #ff8c00;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Badge */
+        .badge-premium {
+            background: linear-gradient(135deg, #ff8c00, #ff2e00);
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* History Item */
+        .history-item {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 12px;
+            margin-bottom: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .history-item:hover {
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        /* Custom Alert */
+        .custom-alert {
+            background: rgba(15, 12, 41, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            border: 1px solid rgba(255, 140, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Support Button */
+        .support-float {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #00b894, #00a37a);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-
-            background:
-                rgba(0,0,0,.72);
-
-            border-bottom:
-                1px solid rgba(255,255,255,.08);
-
-            backdrop-filter: blur(18px);
-
-            position: relative;
-            z-index: 10;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 184, 148, 0.4);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
-        .brand {
-            font-size: 18px;
-            font-weight: 900;
-            letter-spacing: .5px;
+        .support-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 184, 148, 0.6);
+        }
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #fff,
-                    #c9a7ff,
-                    #ff5eae
-                );
+        /* Job Button */
+        .job-btn {
+            background: linear-gradient(135deg, #00b894, #00a37a);
+            border-radius: 40px;
+            transition: all 0.2s ease;
+        }
 
+        .job-btn:active {
+            transform: scale(0.95);
+        }
+
+        .job-btn-disabled {
+            background: linear-gradient(135deg, #6c5ce7, #5a4bcf);
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Icon Gradient */
+        .icon-gradient {
+            background: linear-gradient(135deg, #ff8c00, #ff2e00);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        .premium-badge {
-            padding: 7px 12px;
-
-            border-radius: 30px;
-
-            font-size: 10px;
-            font-weight: 900;
-
-            letter-spacing: 1px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #24102e,
-                    #130c20
-                );
-
-            border:
-                1px solid rgba(255,92,178,.5);
-
-            color: #ffb6dc;
-
-            box-shadow:
-                0 0 15px rgba(255,70,170,.15);
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.5), transparent);
+            margin: 20px 0;
         }
-
-        /* =========================================================
-           PLAYER SECTION
-        ========================================================= */
-
-        .player-wrapper {
-            padding: 18px 14px 0;
-        }
-
-        .video-player {
-            position: relative;
-
-            width: 100%;
-            aspect-ratio: 16 / 10;
-
-            border-radius: 24px;
-
-            overflow: hidden;
-
-            background:
-                radial-gradient(
-                    circle at 50% 45%,
-                    #241c38 0%,
-                    #0c0b12 42%,
-                    #020203 100%
-                );
-
-            border:
-                1px solid rgba(255,255,255,.12);
-
-            box-shadow:
-                0 25px 80px rgba(0,0,0,.8),
-                inset 0 0 60px rgba(120,50,180,.08);
-
-            cursor: pointer;
-        }
-
-        /* Fake video background */
-
-        .video-background {
-            position: absolute;
-            inset: 0;
-
-            background:
-                radial-gradient(
-                    ellipse at center,
-                    rgba(100,50,160,.35),
-                    transparent 55%
-                );
-
-            animation:
-                videoAmbient 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes videoAmbient {
-
-            from {
-                transform: scale(1);
-                opacity: .55;
-            }
-
-            to {
-                transform: scale(1.08);
-                opacity: .9;
-            }
-
-        }
-
-        /* =========================================================
-           MOVING LIGHT
-        ========================================================= */
-
-        .moving-light {
-            position: absolute;
-
-            width: 180px;
-            height: 180px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(255,80,190,.22),
-                    transparent 70%
-                );
-
-            filter: blur(10px);
-
-            animation:
-                movingLight 6s linear infinite;
-        }
-
-        @keyframes movingLight {
-
-            0% {
-                left: -20%;
-                top: 20%;
-            }
-
-            50% {
-                left: 70%;
-                top: 45%;
-            }
-
-            100% {
-                left: -20%;
-                top: 20%;
-            }
-
-        }
-
-        /* =========================================================
-           PLAYER GRID
-        ========================================================= */
-
-        .player-grid {
-            position: absolute;
-            inset: 0;
-
-            background-image:
-                linear-gradient(
-                    rgba(255,255,255,.025) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,.025) 1px,
-                    transparent 1px
-                );
-
-            background-size:
-                35px 35px;
-
-            mask-image:
-                linear-gradient(
-                    to bottom,
-                    transparent,
-                    black,
-                    transparent
-                );
-        }
-
-        /* =========================================================
-           CENTER PLAY AREA
-        ========================================================= */
-
-        .center-player {
-            position: absolute;
-
-            top: 50%;
-            left: 50%;
-
-            transform:
-                translate(-50%, -50%);
-
-            width: 125px;
-            height: 125px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 50%;
-        }
-
-        /* outer glowing rings */
-
-        .ring {
-            position: absolute;
-
-            border-radius: 50%;
-
-            border:
-                1px solid rgba(255,95,190,.4);
-
-            animation:
-                ringPulse 2.5s ease-out infinite;
-        }
-
-        .ring.one {
-            width: 90px;
-            height: 90px;
-        }
-
-        .ring.two {
-            width: 115px;
-            height: 115px;
-
-            animation-delay: .5s;
-        }
-
-        .ring.three {
-            width: 140px;
-            height: 140px;
-
-            animation-delay: 1s;
-        }
-
-        @keyframes ringPulse {
-
-            0% {
-                opacity: .8;
-                transform: scale(.7);
-            }
-
-            70% {
-                opacity: 0;
-                transform: scale(1.25);
-            }
-
-            100% {
-                opacity: 0;
-            }
-
-        }
-
-        /* play button */
-
-        .play-button {
-            width: 82px;
-            height: 82px;
-
-            border-radius: 50%;
-
-            border:
-                1px solid rgba(255,255,255,.35);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.18),
-                    rgba(255,255,255,.04)
-                );
-
-            backdrop-filter: blur(15px);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            box-shadow:
-                0 0 25px rgba(255,60,170,.35),
-                inset 0 0 20px rgba(255,255,255,.08);
-
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease;
-
-            position: relative;
-            z-index: 3;
-        }
-
-        .play-button span {
-            font-size: 34px;
-
-            margin-left: 5px;
-
-            color: white;
-
-            filter:
-                drop-shadow(
-                    0 0 12px
-                    rgba(255,100,200,.9)
-                );
-        }
-
-        .video-player:active .play-button {
-            transform: scale(.91);
-
-            box-shadow:
-                0 0 45px rgba(255,50,180,.75);
-        }
-
-        /* =========================================================
-           PLAYER TOP INFO
-        ========================================================= */
-
-        .player-top {
-            position: absolute;
-
-            top: 14px;
-            left: 15px;
-            right: 15px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            z-index: 4;
-        }
-
-        .live-indicator {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-
-            padding: 6px 10px;
-
-            border-radius: 20px;
-
-            background:
-                rgba(0,0,0,.55);
-
-            backdrop-filter: blur(10px);
-
-            font-size: 10px;
-            font-weight: 800;
-
-            letter-spacing: .8px;
-        }
-
-        .live-dot {
-            width: 7px;
-            height: 7px;
-
-            background: #ff315f;
-
-            border-radius: 50%;
-
-            box-shadow:
-                0 0 10px #ff315f;
-
-            animation:
-                livePulse 1.2s infinite;
-        }
-
-        @keyframes livePulse {
-
-            0%,100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: .35;
-            }
-
-        }
-
-        .quality {
-            padding: 6px 9px;
-
-            border-radius: 8px;
-
-            background:
-                rgba(0,0,0,.55);
-
-            font-size: 10px;
-            font-weight: 900;
-
-            border:
-                1px solid rgba(255,255,255,.15);
-        }
-
-        /* =========================================================
-           LOADING TEXT
-        ========================================================= */
-
-        .loading-status {
-            position: absolute;
-
-            left: 50%;
-            bottom: 70px;
-
-            transform: translateX(-50%);
-
-            white-space: nowrap;
-
-            font-size: 11px;
-
-            color: rgba(255,255,255,.7);
-
-            letter-spacing: 1px;
-
-            animation:
-                statusBlink 1.8s infinite;
-        }
-
-        @keyframes statusBlink {
-
-            0%,100% {
-                opacity: .45;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-        }
-
-        /* =========================================================
-           PLAYER CONTROLS
-        ========================================================= */
-
-        .player-controls {
-            position: absolute;
-
-            left: 15px;
-            right: 15px;
-            bottom: 14px;
-
-            z-index: 5;
-        }
-
-        .progress-track {
-            width: 100%;
-            height: 4px;
-
-            background:
-                rgba(255,255,255,.18);
-
-            border-radius: 10px;
-
-            overflow: hidden;
-        }
-
-        .progress-value {
-            width: 28%;
-
-            height: 100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #9f4dff,
-                    #ff4fa8
-                );
-
-            border-radius: 10px;
-
-            position: relative;
-
-            animation:
-                fakeProgress 5s ease-in-out infinite alternate;
-        }
-
-        @keyframes fakeProgress {
-
-            from {
-                width: 20%;
-            }
-
-            to {
-                width: 42%;
-            }
-
-        }
-
-        .control-row {
-            display: flex;
-
-            justify-content: space-between;
-            align-items: center;
-
-            margin-top: 8px;
-
-            font-size: 10px;
-
-            color: rgba(255,255,255,.72);
-        }
-
-        .control-left,
-        .control-right {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        /* =========================================================
-           VIDEO TITLE
-        ========================================================= */
-
-        .video-info {
-            padding: 20px 5px 8px;
-        }
-
-        .video-title {
-            font-size: 21px;
-            font-weight: 900;
-
-            line-height: 1.25;
-        }
-
-        .video-subtitle {
-            margin-top: 8px;
-
-            color: #888;
-
-            font-size: 12px;
-        }
-
-        .tags {
-            display: flex;
-
-            gap: 8px;
-
-            margin-top: 14px;
-
-            overflow-x: auto;
-
-            scrollbar-width: none;
-        }
-
-        .tags::-webkit-scrollbar {
-            display: none;
-        }
-
-        .tag {
-            white-space: nowrap;
-
-            padding: 7px 11px;
-
-            border-radius: 20px;
-
-            background:
-                rgba(255,255,255,.055);
-
-            border:
-                1px solid rgba(255,255,255,.08);
-
-            color: #aaa;
-
-            font-size: 10px;
-            font-weight: 700;
-        }
-
-        /* =========================================================
-           ACTION BUTTONS
-        ========================================================= */
-
-        .action-row {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 9px;
-
-            margin-top: 20px;
-        }
-
-        .action {
-            padding: 13px 5px;
-
-            border-radius: 14px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #15131c,
-                    #0b0a0e
-                );
-
-            border:
-                1px solid rgba(255,255,255,.08);
-
-            text-align: center;
-
-            color: #aaa;
-
-            font-size: 10px;
-            font-weight: 700;
-        }
-
-        .action-icon {
-            font-size: 17px;
-
-            display: block;
-
-            margin-bottom: 5px;
-
-            color: #fff;
-        }
-
-        /* =========================================================
-           PREMIUM NOTICE
-        ========================================================= */
-
-        .premium-card {
-            margin-top: 20px;
-
-            padding: 18px;
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(88,38,110,.25),
-                    rgba(20,15,30,.8)
-                );
-
-            border:
-                1px solid rgba(196,90,255,.2);
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-        .premium-card::after {
-            content: "";
-
-            position: absolute;
-
-            width: 160px;
-            height: 160px;
-
-            right: -80px;
-            top: -80px;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(255,60,170,.2),
-                    transparent 70%
-                );
-        }
-
-        .premium-title {
-            font-size: 13px;
-            font-weight: 900;
-
-            color: #e9c9ff;
-        }
-
-        .premium-desc {
-            margin-top: 7px;
-
-            font-size: 11px;
-
-            color: #777;
-
-            line-height: 1.6;
-        }
-
-        /* =========================================================
-           CLICK HINT
-        ========================================================= */
-
-        .click-hint {
-            text-align: center;
-
-            margin: 18px 0;
-
-            font-size: 11px;
-
-            color: #777;
-
-            animation:
-                hintPulse 2s infinite;
-        }
-
-        @keyframes hintPulse {
-
-            0%,100% {
-                opacity: .45;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-        }
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        .footer {
-            padding: 30px 15px;
-
-            text-align: center;
-
-            font-size: 9px;
-
-            color: #444;
-
-            border-top:
-                1px solid rgba(255,255,255,.05);
-
-            margin-top: 25px;
-        }
-
-        /* =========================================================
-           AD LOADING OVERLAY
-        ========================================================= */
-
-        .ad-loading {
-            position: fixed;
-
-            inset: 0;
-
-            background:
-                rgba(0,0,0,.88);
-
-            backdrop-filter: blur(18px);
-
-            z-index: 99999;
-
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            flex-direction: column;
-        }
-
-        .ad-loading.show {
-            display: flex;
-        }
-
-        .ad-spinner {
-            width: 58px;
-            height: 58px;
-
-            border-radius: 50%;
-
-            border:
-                3px solid rgba(255,255,255,.08);
-
-            border-top-color:
-                #ff54ad;
-
-            border-right-color:
-                #914cff;
-
-            animation:
-                spin 1s linear infinite;
-
-            box-shadow:
-                0 0 30px rgba(255,60,180,.3);
-        }
-
-        @keyframes spin {
-
-            to {
-                transform: rotate(360deg);
-            }
-
-        }
-
-        .ad-loading-text {
-            margin-top: 18px;
-
-            font-size: 13px;
-
-            font-weight: 800;
-
-            color: #ddd;
-        }
-
-        .ad-loading-sub {
-            margin-top: 7px;
-
-            font-size: 10px;
-
-            color: #666;
-        }
-
-        /* =========================================================
-           MOBILE
-        ========================================================= */
-
-        @media(max-width:380px) {
-
-            .video-player {
-                border-radius: 20px;
-            }
-
-            .center-player {
-                transform:
-                    translate(-50%, -50%)
-                    scale(.88);
-            }
-
-            .video-title {
-                font-size: 19px;
-            }
-
-        }
-
     </style>
+<style id="new-ui-skin">
+/* =========================================================
+   SMART MONEY PRO — NEW UI SKIN
+   Visual layer only. Existing IDs, JS, AdsGram and earning
+   logic are intentionally preserved.
+   ========================================================= */
+:root{
+  --bg:#07111f;
+  --bg2:#0b1728;
+  --panel:#0f2033;
+  --panel2:#12283f;
+  --line:rgba(148,190,220,.14);
+  --text:#f4f8fb;
+  --muted:#8ea5b8;
+  --cyan:#28d7c4;
+  --cyan2:#16a9ff;
+  --lime:#b8ee5a;
+  --danger:#ff667d;
+  --shadow:0 18px 50px rgba(0,0,0,.28);
+}
+html{background:var(--bg);}
+body{
+  font-family:'Inter','Hind Siliguri',sans-serif!important;
+  background:
+    radial-gradient(circle at 15% 5%,rgba(40,215,196,.12),transparent 28%),
+    radial-gradient(circle at 90% 15%,rgba(22,169,255,.13),transparent 30%),
+    linear-gradient(180deg,#07111f 0%,#091725 48%,#07111f 100%)!important;
+  color:var(--text)!important;
+  min-height:100vh;
+  padding-bottom:92px!important;
+}
+.animated-bg{
+  background:
+    radial-gradient(circle at 20% 20%,rgba(40,215,196,.08),transparent 25%),
+    radial-gradient(circle at 80% 70%,rgba(22,169,255,.07),transparent 30%)!important;
+  animation:none!important;
+  opacity:1!important;
+}
+#appContainer{
+  max-width:760px!important;
+  padding:18px 16px 110px!important;
+}
+header{
+  margin-bottom:18px!important;
+  padding:4px 2px 14px;
+  border-bottom:1px solid var(--line);
+}
+header h1{
+  font-size:22px!important;
+  letter-spacing:-.6px;
+  background:linear-gradient(90deg,#f5fbff,#6fe8db 65%,#58b9ff)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+}
+header p{color:var(--muted)!important;}
+header button,
+header #notificationBell,
+header > div > div[onclick]{
+  background:#102237!important;
+  border:1px solid var(--line)!important;
+  box-shadow:none!important;
+}
+header > div > div[onclick]{
+  background:linear-gradient(145deg,#19bcae,#1678b7)!important;
+}
+.glass-card,.stat-card,.task-card,.custom-alert{
+  background:linear-gradient(145deg,rgba(18,40,63,.96),rgba(10,25,41,.96))!important;
+  border:1px solid var(--line)!important;
+  border-radius:18px!important;
+  box-shadow:var(--shadow)!important;
+  backdrop-filter:blur(18px)!important;
+}
+.glass-card:hover,.stat-card:hover,.task-card:hover{
+  transform:none!important;
+  border-color:rgba(40,215,196,.35)!important;
+}
+.balance-card{
+  background:
+    radial-gradient(circle at 85% 20%,rgba(255,255,255,.12),transparent 25%),
+    linear-gradient(135deg,#0e4b59 0%,#126879 48%,#0e3655 100%)!important;
+  border:1px solid rgba(125,239,226,.22)!important;
+  border-radius:24px!important;
+  box-shadow:0 22px 55px rgba(0,0,0,.35)!important;
+  padding:22px!important;
+  position:relative;
+  overflow:hidden;
+}
+.balance-card:after{
+  content:"";
+  position:absolute;
+  width:180px;height:180px;
+  right:-80px;bottom:-95px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;
+  box-shadow:0 0 0 22px rgba(255,255,255,.025),0 0 0 44px rgba(255,255,255,.018);
+}
+.balance-card .divider{
+  background:rgba(255,255,255,.14)!important;
+  margin:18px 0!important;
+}
+.balance-card .text-white\/80,
+.balance-card .text-white\/60,
+.balance-card .text-white\/50{color:rgba(240,250,252,.68)!important;}
+.balance-card .text-4xl{font-size:42px!important;letter-spacing:-1.5px;}
+.badge-premium{
+  background:rgba(184,238,90,.16)!important;
+  border:1px solid rgba(184,238,90,.28);
+  color:var(--lime)!important;
+  border-radius:9px!important;
+  padding:5px 9px!important;
+  font-size:9px!important;
+  letter-spacing:1.3px;
+}
+.btn-premium{
+  background:linear-gradient(135deg,var(--cyan),#1a9bd9)!important;
+  border:1px solid rgba(255,255,255,.14)!important;
+  color:#03151d!important;
+  border-radius:12px!important;
+  box-shadow:0 8px 22px rgba(40,215,196,.18)!important;
+  font-weight:800!important;
+}
+.btn-premium:hover{
+  transform:translateY(-1px)!important;
+  box-shadow:0 10px 28px rgba(40,215,196,.28)!important;
+}
+.btn-secondary{
+  background:#11243a!important;
+  border:1px solid var(--line)!important;
+  color:#d8e7f0!important;
+  border-radius:12px!important;
+}
+.btn-secondary:hover{
+  background:#17304a!important;
+  border-color:rgba(40,215,196,.3)!important;
+}
+.stat-card{
+  padding:16px!important;
+  text-align:left!important;
+}
+.stat-card i{
+  background:rgba(40,215,196,.1);
+  border-radius:10px;
+  padding:7px;
+  width:34px!important;height:34px!important;
+  color:var(--cyan)!important;
+}
+.stat-card p.text-white\/60{color:var(--muted)!important;}
+.stat-card .text-xl{font-size:24px!important;margin-top:3px;}
+.task-card{
+  padding:15px!important;
+  border-radius:16px!important;
+}
+.task-card .w-12{
+  width:44px!important;height:44px!important;
+  border-radius:12px!important;
+  background:linear-gradient(145deg,#124d5d,#126d83)!important;
+}
+.task-card h3{font-size:14px!important;}
+.task-card p{color:var(--muted)!important;}
+.task-card .btn-premium,
+.task-card .btn-secondary{padding:10px 14px!important;font-size:12px!important;}
+.input-premium{
+  background:#0b1c2e!important;
+  border:1px solid var(--line)!important;
+  border-radius:12px!important;
+  color:#f3f8fb!important;
+  padding:13px 15px!important;
+}
+.input-premium:focus{
+  border-color:rgba(40,215,196,.65)!important;
+  box-shadow:0 0 0 3px rgba(40,215,196,.08)!important;
+  background:#0d2237!important;
+}
+input::placeholder{color:#71889b!important;}
+select.input-premium option{background:#0b1c2e!important;}
+h2{
+  letter-spacing:-.5px;
+  color:#f3f8fb!important;
+  background:none!important;
+  -webkit-text-fill-color:initial!important;
+}
+.divider{background:var(--line)!important;}
+.history-item{
+  background:#0c1d30!important;
+  border:1px solid var(--line);
+  border-radius:12px!important;
+  padding:13px!important;
+}
+.nav-bar{
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%);
+  width:min(760px,100%)!important;
+  max-width:none!important;
+  bottom:0!important;
+  padding:9px 12px 12px!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  background:rgba(6,17,29,.96)!important;
+  border-top:1px solid var(--line)!important;
+  border-radius:20px 20px 0 0!important;
+  box-shadow:0 -18px 45px rgba(0,0,0,.35)!important;
+  backdrop-filter:blur(20px)!important;
+}
+.nav-item{
+  border-radius:12px!important;
+  padding:10px 5px!important;
+  color:#7891a5!important;
+}
+.nav-item.active{
+  background:linear-gradient(145deg,rgba(40,215,196,.16),rgba(22,169,255,.1))!important;
+  border:1px solid rgba(40,215,196,.18);
+  box-shadow:none!important;
+}
+.nav-item.active i,.nav-item.active span{color:var(--cyan)!important;}
+.support-float{
+  bottom:84px!important;
+  right:18px!important;
+  width:46px!important;height:46px!important;
+  background:linear-gradient(145deg,#163a54,#126e7c)!important;
+  border:1px solid rgba(255,255,255,.15)!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.32)!important;
+}
+.ad-status{
+  left:16px!important;right:16px!important;bottom:82px!important;
+  background:linear-gradient(135deg,#16a99b,#1685b7)!important;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:12px!important;
+  box-shadow:0 14px 35px rgba(0,0,0,.35)!important;
+}
+.custom-alert{
+  background:#0b1a2b!important;
+  border-color:rgba(40,215,196,.25)!important;
+}
+.custom-alert i{color:var(--cyan)!important;}
+#profilePhoto{
+  border:3px solid rgba(40,215,196,.65)!important;
+  box-shadow:0 0 0 8px rgba(40,215,196,.07),0 15px 35px rgba(0,0,0,.3)!important;
+}
+.icon-gradient{
+  background:linear-gradient(135deg,var(--cyan),#55b8ff)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+}
+.job-btn{
+  background:linear-gradient(135deg,#19bcae,#1689bd)!important;
+  border-radius:12px!important;
+}
+.job-btn-disabled{
+  background:#25384b!important;
+  opacity:.6!important;
+}
+#home-page > div:first-child:before{
+  content:"EARN • TRACK • WITHDRAW";
+  display:block;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:2px;
+  color:rgba(255,255,255,.52);
+  margin-bottom:10px;
+}
+#home-page > div:nth-child(2){
+  margin-top:2px;
+}
+.sub-page{animation:pageIn .28s ease!important;}
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.animate-fade-up{animation:none!important;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#081522;}
+::-webkit-scrollbar-thumb{background:#1e7180;border-radius:8px;}
+@media (min-width:640px){
+  #appContainer{padding-left:24px!important;padding-right:24px!important;}
+}
+</style>
+<style id="earnova-white-ui">
+/* =========================================================
+   EARNOVA — COMPLETE WHITE FINTECH UI
+   Visual redesign only. Existing functionality/JS/IDs remain.
+   ========================================================= */
+:root{
+  --bg:#ffffff;
+  --surface:#ffffff;
+  --surface2:#f7f9fc;
+  --surface3:#f1f5f9;
+  --line:#e7ebf0;
+  --text:#172033;
+  --muted:#7b8798;
+  --primary:#2563eb;
+  --primary2:#4f46e5;
+  --green:#16a34a;
+  --danger:#dc3545;
+  --shadow:0 8px 28px rgba(23,32,51,.07);
+}
+html,body{
+  background:#fff!important;
+  color:var(--text)!important;
+}
+body{
+  font-family:'Inter','Hind Siliguri',sans-serif!important;
+  background:#fff!important;
+  min-height:100vh;
+  padding-bottom:92px!important;
+}
+.animated-bg{
+  display:none!important;
+}
+#appContainer{
+  max-width:780px!important;
+  padding:20px 16px 112px!important;
+  background:#fff!important;
+}
+header{
+  margin:0 0 22px!important;
+  padding:6px 2px 18px!important;
+  border-bottom:1px solid #edf0f4!important;
+  background:#fff!important;
+}
+header h1{
+  color:#172033!important;
+  background:none!important;
+  -webkit-text-fill-color:initial!important;
+  font-size:21px!important;
+  font-weight:850!important;
+  letter-spacing:-.7px;
+}
+header p{color:#8a95a5!important;}
+header button,
+header #notificationBell,
+header > div > div[onclick]{
+  background:#f5f7fa!important;
+  color:#4b5870!important;
+  border:1px solid #e8edf2!important;
+  box-shadow:none!important;
+}
+header > div > div[onclick]{
+  background:#172033!important;
+  color:#fff!important;
+  border-color:#172033!important;
+}
+.glass-card,.stat-card,.task-card,.custom-alert{
+  background:#fff!important;
+  border:1px solid #e7ebf0!important;
+  border-radius:14px!important;
+  box-shadow:var(--shadow)!important;
+  backdrop-filter:none!important;
+}
+.glass-card:hover,.stat-card:hover,.task-card:hover{
+  transform:none!important;
+  border-color:#d8e0ea!important;
+}
+.balance-card{
+  background:#f7f9fc!important;
+  color:#172033!important;
+  border:1px solid #e5eaf0!important;
+  border-radius:18px!important;
+  box-shadow:0 10px 30px rgba(23,32,51,.08)!important;
+  padding:22px!important;
+  position:relative;
+  overflow:hidden;
+}
+.balance-card:before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:4px;
+  background:linear-gradient(90deg,#2563eb,#4f46e5);
+}
+.balance-card:after{display:none!important;}
+.balance-card .divider{background:#e5eaf0!important;}
+.balance-card .text-white,
+.balance-card .text-white\/80,
+.balance-card .text-white\/60,
+.balance-card .text-white\/50{
+  color:var(--text)!important;
+}
+.balance-card .text-white\/60,
+.balance-card .text-white\/50{color:var(--muted)!important;}
+.balance-card .text-4xl{
+  font-size:40px!important;
+  color:#172033!important;
+  letter-spacing:-1.5px;
+}
+.badge-premium{
+  background:#eef2ff!important;
+  border:1px solid #dbe3ff!important;
+  color:#4f46e5!important;
+  border-radius:8px!important;
+  padding:5px 9px!important;
+  font-size:9px!important;
+  letter-spacing:1.1px;
+}
+.btn-premium{
+  background:#2563eb!important;
+  border:1px solid #2563eb!important;
+  color:#fff!important;
+  border-radius:10px!important;
+  box-shadow:0 6px 16px rgba(37,99,235,.16)!important;
+  font-weight:800!important;
+}
+.btn-premium:hover{
+  background:#1d4ed8!important;
+  transform:translateY(-1px)!important;
+  box-shadow:0 8px 20px rgba(37,99,235,.2)!important;
+}
+.btn-secondary{
+  background:#fff!important;
+  border:1px solid #dfe5ec!important;
+  color:#344054!important;
+  border-radius:10px!important;
+}
+.btn-secondary:hover{
+  background:#f7f9fc!important;
+  border-color:#cfd8e3!important;
+}
+.stat-card{
+  padding:16px!important;
+  text-align:left!important;
+}
+.stat-card i{
+  background:#eef4ff!important;
+  border-radius:10px!important;
+  padding:7px;
+  width:34px!important;height:34px!important;
+  color:#2563eb!important;
+}
+.stat-card p.text-white\/60{color:var(--muted)!important;}
+.stat-card .text-xl{font-size:23px!important;color:#172033!important;}
+.task-card{
+  padding:15px!important;
+  border-radius:14px!important;
+  box-shadow:0 5px 20px rgba(23,32,51,.055)!important;
+}
+.task-card .w-12{
+  width:44px!important;height:44px!important;
+  border-radius:11px!important;
+  background:#eef4ff!important;
+  color:#2563eb!important;
+}
+.task-card h3{font-size:14px!important;color:#172033!important;}
+.task-card p{color:#7b8798!important;}
+.task-card .btn-premium,
+.task-card .btn-secondary{padding:10px 14px!important;font-size:12px!important;}
+.input-premium{
+  background:#fff!important;
+  border:1px solid #dfe5ec!important;
+  border-radius:10px!important;
+  color:#172033!important;
+  padding:13px 15px!important;
+  box-shadow:0 1px 2px rgba(23,32,51,.02)!important;
+}
+.input-premium:focus{
+  border-color:#7da2f8!important;
+  box-shadow:0 0 0 3px rgba(37,99,235,.08)!important;
+  background:#fff!important;
+}
+input::placeholder{color:#a0a9b7!important;}
+select.input-premium option{background:#fff!important;color:#172033!important;}
+h2{
+  color:#172033!important;
+  background:none!important;
+  -webkit-text-fill-color:initial!important;
+  letter-spacing:-.45px;
+}
+.divider{background:#e9edf2!important;}
+.history-item{
+  background:#fafbfc!important;
+  border:1px solid #e7ebf0!important;
+  border-radius:11px!important;
+  padding:13px!important;
+}
+.nav-bar{
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%);
+  width:min(780px,100%)!important;
+  max-width:none!important;
+  bottom:0!important;
+  padding:9px 12px 12px!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  background:rgba(255,255,255,.97)!important;
+  border-top:1px solid #e7ebf0!important;
+  border-radius:18px 18px 0 0!important;
+  box-shadow:0 -8px 28px rgba(23,32,51,.08)!important;
+  backdrop-filter:blur(12px)!important;
+}
+.nav-item{
+  border-radius:10px!important;
+  padding:10px 5px!important;
+  color:#98a2b3!important;
+}
+.nav-item.active{
+  background:#eef4ff!important;
+  border:1px solid #dce8ff!important;
+  box-shadow:none!important;
+}
+.nav-item.active i,.nav-item.active span{color:#2563eb!important;}
+.support-float{
+  bottom:84px!important;
+  right:18px!important;
+  width:44px!important;height:44px!important;
+  background:#172033!important;
+  border:1px solid #172033!important;
+  box-shadow:0 8px 22px rgba(23,32,51,.18)!important;
+}
+.ad-status{
+  left:16px!important;right:16px!important;bottom:82px!important;
+  background:#172033!important;
+  color:#fff!important;
+  border:1px solid #172033!important;
+  border-radius:10px!important;
+  box-shadow:0 10px 28px rgba(23,32,51,.18)!important;
+}
+.custom-alert{
+  background:#fff!important;
+  border-color:#dfe5ec!important;
+}
+.custom-alert i{color:#2563eb!important;}
+#profilePhoto{
+  border:3px solid #fff!important;
+  box-shadow:0 0 0 2px #dce4ee,0 8px 20px rgba(23,32,51,.12)!important;
+}
+.icon-gradient{
+  background:none!important;
+  color:#2563eb!important;
+  -webkit-text-fill-color:#2563eb!important;
+}
+.job-btn{
+  background:#2563eb!important;
+  border-radius:10px!important;
+}
+.job-btn-disabled{
+  background:#e8edf3!important;
+  color:#98a2b3!important;
+  opacity:1!important;
+}
+#home-page > div:first-child:before{
+  content:"EARN • TRACK • WITHDRAW";
+  display:block;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.8px;
+  color:#98a2b3;
+  margin-bottom:9px;
+}
+.sub-page{animation:pageIn .22s ease!important;}
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(5px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.animate-fade-up{animation:none!important;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#fff;}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px;}
+@media (min-width:640px){
+  #appContainer{padding-left:24px!important;padding-right:24px!important;}
+}
+</style>
+<style id="clear-bottom-navigation">
+/* ===== Clear bottom navigation: Home / Daily Jobs / Sponsored ===== */
+.nav-bar{
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  width:min(780px,100%)!important;
+  max-width:none!important;
+  height:72px!important;
+  padding:8px 12px 10px!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,1fr)!important;
+  gap:8px!important;
+  align-items:stretch!important;
+  background:#ffffff!important;
+  border-top:1px solid #dfe5ec!important;
+  border-radius:16px 16px 0 0!important;
+  box-shadow:0 -7px 24px rgba(23,32,51,.10)!important;
+  z-index:1000!important;
+}
+.nav-item{
+  min-width:0!important;
+  min-height:52px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:3px!important;
+  border-radius:10px!important;
+  padding:6px 4px!important;
+  color:#667085!important;
+  background:#ffffff!important;
+  border:1px solid transparent!important;
+  font-weight:700!important;
+  font-size:12px!important;
+  line-height:1.15!important;
+}
+.nav-item i{
+  font-size:18px!important;
+  line-height:1!important;
+  color:#667085!important;
+}
+.nav-item span{
+  display:block!important;
+  color:#475467!important;
+  white-space:nowrap!important;
+  font-size:12px!important;
+  font-weight:800!important;
+}
+.nav-item.active{
+  background:#eef4ff!important;
+  border:1px solid #cfe0ff!important;
+  box-shadow:none!important;
+}
+.nav-item.active i,.nav-item.active span{
+  color:#2563eb!important;
+}
+@media(max-width:380px){
+  .nav-item{font-size:11px!important;}
+  .nav-item span{font-size:11px!important;}
+}
+</style>
 </head>
-
-
 <body>
 
-<div class="app">
+    <div class="animated-bg"></div>
 
-    <!-- =========================================================
-         HEADER
-    ========================================================= -->
-
-    <header class="top-header">
-
-        <div class="brand">
-            🎬 PREMIUM VIDEO
-        </div>
-
-        <div class="premium-badge">
-            4K ULTRA HD
-        </div>
-
-    </header>
-
-
-    <!-- =========================================================
-         PLAYER
-    ========================================================= -->
-
-    <main class="player-wrapper">
-
-        <div
-            class="video-player"
-            id="videoPlayer"
-            data-link="https://t.me/khelahobe07_bot?startapp"
-        >
-
-            <!-- Background -->
-            <div class="video-background"></div>
-
-            <div class="player-grid"></div>
-
-            <div class="moving-light"></div>
-
-
-            <!-- Player top -->
-
-            <div class="player-top">
-
-                <div class="live-indicator">
-
-                    <span class="live-dot"></span>
-
-                    READY TO PLAY
-
-                </div>
-
-                <div class="quality">
-                    4K HDR
-                </div>
-
+    <!-- Main Container -->
+    <div id="appContainer" class="max-w-md mx-auto px-4 py-4">
+        
+        <!-- Header -->
+        <header class="flex items-center justify-between mb-6 animate-fade-up">
+            <div>
+                <h1 class="text-2xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+                    Earnova
+                </h1>
+                <p class="text-white/40 text-xs mt-1">Earn Money | Withdraw Instantly</p>
             </div>
-
-
-            <!-- Center Play -->
-
-            <div class="center-player">
-
-                <div class="ring one"></div>
-                <div class="ring two"></div>
-                <div class="ring three"></div>
-
-                <div
-                    class="play-button"
-                    id="playButton"
-                >
-                    <span>▶</span>
+            <div class="flex items-center gap-3">
+                <button id="darkModeToggle" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm">
+                    <i data-lucide="moon" class="w-5 h-5 text-white"></i>
+                </button>
+                <div id="notificationBell" class="relative cursor-pointer w-10 h-10 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm">
+                    <i data-lucide="bell" class="w-5 h-5 text-white"></i>
+                    <div id="notificationDot" class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full hidden"></div>
                 </div>
-
-            </div>
-
-
-            <!-- Loading Status -->
-
-            <div class="loading-status">
-
-                VIDEO READY • TAP TO PLAY
-
-            </div>
-
-
-            <!-- Controls -->
-
-            <div class="player-controls">
-
-                <div class="progress-track">
-
-                    <div class="progress-value"></div>
-
+                <div onclick="navigateTo('profile-page')" class="cursor-pointer w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center">
+                    <i data-lucide="user" class="w-5 h-5 text-white"></i>
                 </div>
+            </div>
+        </header>
 
-                <div class="control-row">
-
-                    <div class="control-left">
-
-                        <span>▶</span>
-
-                        <span>00:00</span>
-
+        <!-- Main Content Area -->
+        <main>
+            <!-- Home Page -->
+            <div id="home-page" class="sub-page space-y-5 animate-fade-up">
+                <!-- Balance Card -->
+                <div class="balance-card p-5">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white/80 text-sm">Total Balance</p>
+                            <p class="text-4xl font-bold mt-1">৳<span id="coinBalance">0</span></p>
+                            <p class="text-white/60 text-xs mt-2">≈ $<span id="usdBalance">0.00</span> USD</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="badge-premium inline-block">PREMIUM</div>
+                            <p class="text-white/50 text-xs mt-2">Member since today</p>
+                        </div>
                     </div>
-
-                    <div class="control-right">
-
-                        <span>12:48</span>
-
-                        <span>⚙</span>
-
-                        <span>⛶</span>
-
+                    <div class="divider my-3"></div>
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-4 h-4 text-white/60"></i>
+                            <span class="text-white/60 text-sm">Today's Earning</span>
+                            <span class="text-white font-semibold">৳<span id="todayEarning">0</span></span>
+                        </div>
+                        <button id="homeWithdrawBtn" class="btn-premium px-5 py-2 text-sm font-semibold">
+                            Withdraw <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
                     </div>
-
                 </div>
 
+                <!-- Stats Row -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="stat-card p-3 text-center">
+                        <i data-lucide="eye" class="w-5 h-5 mx-auto mb-1 text-orange-400"></i>
+                        <p class="text-white/60 text-xs">Ads Watched</p>
+                        <p class="text-xl font-bold"><span id="adsWatchedCount">0</span>/<span id="dailyLimit">20</span></p>
+                    </div>
+                    <div class="stat-card p-3 text-center">
+                        <i data-lucide="briefcase" class="w-5 h-5 mx-auto mb-1 text-green-400"></i>
+                        <p class="text-white/60 text-xs">Jobs Done</p>
+                        <p class="text-xl font-bold"><span id="jobsDoneCount">0</span></p>
+                    </div>
+                </div>
+
+                <!-- Daily Tasks Section -->
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="text-lg font-semibold">Daily Tasks</h2>
+                        <p class="text-white/40 text-xs">Remaining: <span id="adsLeftCount">20</span></p>
+                    </div>
+                    <div class="space-y-3">
+                        <!-- Watch Ad Button -->
+                        <div class="task-card p-4 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center">
+                                    <i data-lucide="play-circle" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold">Watch AdsGram Ad</h3>
+                                    <p class="text-white/50 text-xs">Rewarded Video • ৳10 per view</p>
+                                </div>
+                            </div>
+                            <button id="watchAdBtn" class="btn-premium px-5 py-2 text-sm font-semibold">
+                                Watch <i class="fas fa-play ml-1"></i>
+                            </button>
+                        </div>
+
+                        <!-- Daily Jobs -->
+                        <div class="task-card p-4 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                                    <i data-lucide="briefcase" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold">Daily Jobs</h3>
+                                    <p class="text-white/50 text-xs">20 Jobs • ৳10 each</p>
+                                </div>
+                            </div>
+                            <button onclick="navigateTo('daily-jobs-page')" class="btn-secondary px-5 py-2 text-sm font-semibold">
+                                View <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+
+                        <!-- Telegram Channel -->
+                        <div class="task-card p-4 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
+                                    <i data-lucide="send" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold">Join Telegram Channel</h3>
+                                    <p class="text-white/50 text-xs">Get updates & bonuses</p>
+                                </div>
+                            </div>
+                            <button id="telegramJoinBtn" class="btn-secondary px-5 py-2 text-sm font-semibold">
+                                Join <i class="fab fa-telegram ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Referral Section -->
+                <div class="glass-card p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-semibold">Refer & Earn</h3>
+                        <span class="badge-premium">+৳50 per referral</span>
+                    </div>
+                    <p class="text-white/50 text-xs mb-3">Invite friends and earn ৳50 when they join!</p>
+                    <div class="flex gap-2">
+                        <input type="text" id="referralLink" readonly class="input-premium flex-1 text-sm" value="Loading...">
+                        <button id="copyReferralBtn" class="btn-premium px-4 py-2 text-sm">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
 
-        </div>
-
-
-        <!-- =====================================================
-             VIDEO INFO
-        ====================================================== -->
-
-        <section class="video-info">
-
-            <h1 class="video-title">
-                Premium Video • Full HD Experience
-            </h1>
-
-            <p class="video-subtitle">
-                The video is ready to play • High quality streaming
-            </p>
-
-
-            <div class="tags">
-
-                <div class="tag">
-                    4K ULTRA
+            <!-- Wallet Page -->
+            <div id="wallet-page" class="sub-page space-y-5 hidden animate-fade-up">
+                <h2 class="text-2xl font-bold text-center bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">My Wallet</h2>
+                
+                <div class="glass-card p-5">
+                    <h3 class="font-semibold mb-4">Withdraw Funds</h3>
+                    <div class="balance-card p-4 mb-4 text-center">
+                        <p class="text-white/80 text-sm">Available Balance</p>
+                        <p class="text-3xl font-bold">৳<span id="walletBalance">0</span></p>
+                        <p class="text-white/50 text-xs">Min Withdrawal: ৳2000</p>
+                    </div>
+                    
+                    <input type="number" id="withdrawAmount" placeholder="Enter amount (৳)" class="input-premium w-full mb-3">
+                    <select id="withdrawMethod" class="input-premium w-full mb-3">
+                        <option value="">Select Payment Method</option>
+                        <option value="Bkash">bKash</option>
+                        <option value="Nagad">Nagad</option>
+                        <option value="Rocket">Rocket</option>
+                        <option value="Bank">Bank Transfer</option>
+                    </select>
+                    <div id="paymentDetailsContainer"></div>
+                    <button id="withdrawSubmitBtn" class="btn-premium w-full py-3 mt-3 font-semibold">
+                        Request Withdrawal <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
                 </div>
 
-                <div class="tag">
-                    HD QUALITY
+                <div class="glass-card p-5">
+                    <h3 class="font-semibold mb-3 flex items-center gap-2">
+                        <i data-lucide="history" class="w-5 h-5"></i>
+                        Withdrawal History
+                    </h3>
+                    <div id="withdrawalHistoryList" class="space-y-2 max-h-64 overflow-y-auto">
+                        <p class="text-white/40 text-center py-4">No withdrawal history yet</p>
+                    </div>
                 </div>
-
-                <div class="tag">
-                    PREMIUM
-                </div>
-
-                <div class="tag">
-                    EXCLUSIVE
-                </div>
-
             </div>
 
-
-            <!-- Action buttons -->
-
-            <div class="action-row">
-
-                <div class="action">
-
-                    <span class="action-icon">
-                        👍
-                    </span>
-
-                    Like
-
+            <!-- Profile Page -->
+            <div id="profile-page" class="sub-page space-y-5 hidden animate-fade-up">
+                <h2 class="text-2xl font-bold text-center bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">My Profile</h2>
+                
+                <div class="glass-card p-6 text-center">
+                    <div class="relative inline-block">
+                        <img id="profilePhoto" src="https://placehold.co/100x100/ff8c00/white?text=U" class="w-24 h-24 rounded-full mx-auto border-3 border-orange-500 shadow-lg">
+                        <div class="absolute bottom-0 right-0 w-6 h-6 bg-green-500 rounded-full border-2 border-white"></div>
+                    </div>
+                    <h3 id="profileName" class="text-xl font-bold mt-3">User Name</h3>
+                    <p id="profileUsername" class="text-white/50 text-sm">@username</p>
+                    <div class="badge-premium inline-block mt-2">Active Member</div>
                 </div>
 
-                <div class="action">
-
-                    <span class="action-icon">
-                        ↗
-                    </span>
-
-                    Share
-
+                <div class="glass-card p-5">
+                    <h3 class="font-semibold mb-3">Account Information</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between py-2 border-b border-white/10">
+                            <span class="text-white/60">Joined Via</span>
+                            <span id="joinedVia" class="font-medium">Telegram</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-white/10">
+                            <span class="text-white/60">User ID</span>
+                            <span id="profileUserId" class="font-medium">123456</span>
+                        </div>
+                        <div class="flex justify-between py-2">
+                            <span class="text-white/60">Total Earned</span>
+                            <span id="totalEarned" class="font-medium text-green-400">৳0</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="action">
-
-                    <span class="action-icon">
-                        🔖
-                    </span>
-
-                    Save
-
+                <div id="adminAccessPanel" class="hidden">
+                    <button onclick="navigateTo('admin-panel')" class="btn-premium w-full py-3 font-semibold">
+                        <i class="fas fa-shield-alt mr-2"></i> Admin Panel
+                    </button>
                 </div>
-
             </div>
 
-
-            <!-- Premium notice -->
-
-            <div class="premium-card">
-
-                <div class="premium-title">
-                    ✨ PREMIUM STREAM
-                </div>
-
-                <div class="premium-desc">
-                    আপনার ভিডিও প্লেয়ার প্রস্তুত।
-                    Play বাটনে ক্লিক করলে ভিডিও চালুর আগে
-                    একটি advertisement প্রদর্শিত হতে পারে।
-                </div>
-
+            <!-- Notifications Page -->
+            <div id="notifications-page" class="sub-page space-y-4 hidden animate-fade-up">
+                <h2 class="text-2xl font-bold text-center bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Notifications</h2>
+                <div id="notificationsList" class="space-y-3"></div>
             </div>
 
+            <!-- Daily Jobs Page -->
+            <div id="daily-jobs-page" class="sub-page space-y-4 hidden animate-fade-up">
+                <div class="flex items-center justify-between mb-2">
+                    <button onclick="navigateTo('home-page')" class="btn-secondary px-4 py-2 text-sm flex items-center gap-1">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <h2 class="text-xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Daily Jobs</h2>
+                    <div class="w-16"></div>
+                </div>
 
-            <div class="click-hint">
+                <div class="glass-card p-4 text-center">
+                    <i data-lucide="video" class="w-10 h-10 mx-auto text-orange-400 mb-2"></i>
+                    <h3 class="font-semibold">Watch AdsGram Ad to Earn</h3>
+                    <p class="text-white/50 text-sm mt-1">Click any job below, watch the ad, and earn ৳10 instantly!</p>
+                    <div class="flex justify-center gap-4 mt-3 text-xs">
+                        <span class="flex items-center gap-1"><span class="w-2 h-2 bg-green-500 rounded-full"></span> Available</span>
+                        <span class="flex items-center gap-1"><span class="w-2 h-2 bg-red-500 rounded-full"></span> 8h Cooldown</span>
+                    </div>
+                </div>
 
-                ⏵ ভিডিও চালু করতে Play বাটনে ক্লিক করুন
-
+                <div id="dailyJobsContainer" class="space-y-3 max-h-96 overflow-y-auto pb-4"></div>
             </div>
 
-        </section>
+            <!-- Admin Panel -->
+            <div id="admin-panel" class="sub-page space-y-5 hidden animate-fade-up">
+                <div class="flex items-center justify-between mb-2">
+                    <button onclick="navigateTo('profile-page')" class="btn-secondary px-4 py-2 text-sm flex items-center gap-1">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <h2 class="text-xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Admin Panel</h2>
+                    <div class="w-16"></div>
+                </div>
 
+                <div class="glass-card p-5">
+                    <h3 class="font-semibold mb-3">Send Bonus to All Users</h3>
+                    <input type="number" id="bonusAmount" placeholder="Bonus Amount (৳)" class="input-premium w-full mb-3">
+                    <button id="sendBonusBtn" class="btn-premium w-full py-3 font-semibold">
+                        <i class="fas fa-gift mr-2"></i> Distribute Bonus
+                    </button>
+                </div>
 
-        <footer class="footer">
+                <div class="glass-card p-5">
+                    <h3 class="font-semibold mb-3">Platform Statistics</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-white/60">AdsGram Status</span>
+                            <span id="adsgramStatusBadge" class="text-green-400">● Active</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/60">Block ID</span>
+                            <span id="blockIdStatus" class="font-mono text-sm">int-25417</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/60">Today's Ads</span>
+                            <span id="adminAdsCount">0/20</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/60">Total Users</span>
+                            <span id="totalUsersCount">0</span>
+                        </div>
+                    </div>
+                </div>
 
-            PREMIUM VIDEO STREAMING
+                <div class="glass-card p-5">
+                    <h3 class="font-semibold mb-3">Reports</h3>
+                    <button id="sendManualReportBtn" class="btn-secondary w-full py-3 font-semibold">
+                        <i class="fas fa-paper-plane mr-2"></i> Send Manual Report
+                    </button>
+                    <p class="text-white/40 text-xs text-center mt-3">Auto report sent every 1 hour</p>
+                </div>
+            </div>
+        </main>
 
-            <br><br>
-
-            HD • 4K • FAST STREAMING
-
-        </footer>
-
-    </main>
-
-</div>
-
-
-<!-- =============================================================
-     ADSGRAM LOADING
-============================================================= -->
-
-<div
-    class="ad-loading"
-    id="adLoading"
->
-
-    <div class="ad-spinner"></div>
-
-    <div class="ad-loading-text">
-        Advertisement Loading...
+        <!-- Bottom Navigation -->
+        <nav class="nav-bar fixed bottom-0 left-0 right-0 max-w-md mx-auto mt-6">
+            <div class="flex justify-around py-2">
+                <div class="nav-item active text-center py-2 px-4 cursor-pointer" data-page="home-page">
+                    <i data-lucide="home" class="w-6 h-6 mx-auto text-white"></i>
+                    <span class="text-xs block mt-1 text-white/70">হোম</span>
+                </div>
+                <div class="nav-item text-center py-2 px-4 cursor-pointer" data-page="wallet-page">
+                    <i data-lucide="wallet" class="w-6 h-6 mx-auto text-white/60"></i>
+                    <span class="text-xs block mt-1 text-white/50">ডেইলি জব</span>
+                </div>
+                <div class="nav-item text-center py-2 px-4 cursor-pointer" data-page="daily-jobs-page">
+                    <i data-lucide="briefcase" class="w-6 h-6 mx-auto text-white/60"></i>
+                    <span class="text-xs block mt-1 text-white/50">স্পন্সরড</span>
+                </div>
+            </div>
+        </nav>
     </div>
 
-    <div class="ad-loading-sub">
-        Please wait
+    <!-- Floating Support Button -->
+    <div id="supportBtn" class="support-float hidden" onclick="openSupportPage()">
+        <i class="fas fa-headset text-white text-xl"></i>
     </div>
 
-</div>
+    <!-- Custom Alert Modal -->
+    <div id="customAlert" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden p-4">
+        <div class="custom-alert max-w-sm w-full p-6 text-center">
+            <i data-lucide="bell" class="w-12 h-12 mx-auto text-orange-400 mb-3"></i>
+            <p id="alertMessage" class="text-white mb-4">Alert message here</p>
+            <button id="alertOkBtn" class="btn-premium px-6 py-2">Got it</button>
+        </div>
+    </div>
 
+    <script>
+        // ==================== CONFIGURATION ====================
+        const CONFIG = {
+            app: {
+                name: "Earnova",
+                minWithdrawal: 2000,
+                dailyAdLimit: 20,
+                adReward: 10,
+                dailyJobReward: 10,
+                referralBonus: 50
+            },
+            adsgram: {
+                enabled: true,
+                blockId: "int-25417",  // 👈 Your AdsGram block ID here
+                rewardAmount: 10
+            },
+            social: {
+                telegram: "https://t.me/+tLB334Ko71tjY2Y1"
+            },
+            bot: {
+                adminChatId: "7793213912",
+                reportChannelId: "-1003331749273"
+            },
+            support: {
+                telegraphUrl: "https://t.me/smartmoneypro_bot"
+            },
+            dailyJobs: 20
+        };
 
-<script>
+        // ==================== VARIABLES ====================
+        let currentUser = null;
+        let userData = null;
+        let adsGramReady = false;
+        let adsGramCount = 0;
+        let AdController = null;
+        let isAdShowing = false;
 
-    /* =========================================================
-       ADSGRAM CONFIGURATION
-    ========================================================= */
+        let dailyStats = {
+            date: new Date().toISOString().split('T')[0],
+            newUsers: 0,
+            totalUsers: 0,
+            adsWatched: 0,
+            jobsCompleted: 0,
+            totalWithdrawals: 0,
+            totalWithdrawalAmount: 0
+        };
 
-    const ADSGRAM_ZONE_ID = "int-38331";
+        const tg = window.Telegram.WebApp;
 
-    /*
-       আপনার বর্তমান redirect link
-       data-link থেকে নেওয়া হবে।
-    */
+        // ==================== UTILITY FUNCTIONS ====================
+        function showAlert(message) {
+            const alert = document.getElementById('customAlert');
+            const msgEl = document.getElementById('alertMessage');
+            if (msgEl) msgEl.textContent = message;
+            if (alert) alert.classList.remove('hidden');
+            const okBtn = document.getElementById('alertOkBtn');
+            if (okBtn) {
+                okBtn.onclick = () => alert.classList.add('hidden');
+            }
+        }
 
-    const videoPlayer =
-        document.getElementById("videoPlayer");
+        function showAdStatus(message, isError = false) {
+            const existing = document.querySelector('.ad-status');
+            if (existing) existing.remove();
+            const div = document.createElement('div');
+            div.className = 'ad-status';
+            div.style.background = isError ? 'linear-gradient(135deg, #ef4444, #dc2626)' : 'linear-gradient(135deg, #ff8c00, #ff2e00)';
+            div.innerHTML = message;
+            document.body.appendChild(div);
+            setTimeout(() => div.remove(), 3000);
+        }
 
-    const playButton =
-        document.getElementById("playButton");
+        function saveUserData() {
+            if (!currentUser) return;
+            const key = `user_${currentUser.id}`;
+            localStorage.setItem(key, JSON.stringify(userData));
+        }
 
-    const adLoading =
-        document.getElementById("adLoading");
+        function loadUserData() {
+            if (!currentUser) return null;
+            const key = `user_${currentUser.id}`;
+            const stored = localStorage.getItem(key);
+            if (stored) return JSON.parse(stored);
+            return null;
+        }
 
+        function updateUI() {
+            if (!userData) return;
+            document.getElementById('coinBalance').textContent = userData.balance || 0;
+            document.getElementById('walletBalance').textContent = userData.balance || 0;
+            document.getElementById('usdBalance').textContent = ((userData.balance || 0) / 120).toFixed(2);
+            document.getElementById('adsWatchedCount').textContent = adsGramCount;
+            document.getElementById('adsLeftCount').textContent = CONFIG.app.dailyAdLimit - adsGramCount;
+            document.getElementById('adminAdsCount').textContent = `${adsGramCount}/${CONFIG.app.dailyAdLimit}`;
+            
+            const profileName = document.getElementById('profileName');
+            const profileUsername = document.getElementById('profileUsername');
+            const profileUserId = document.getElementById('profileUserId');
+            const joinedVia = document.getElementById('joinedVia');
+            
+            if (profileName) profileName.textContent = userData.name || 'User';
+            if (profileUsername) profileUsername.textContent = `@${userData.username || 'user'}`;
+            if (profileUserId) profileUserId.textContent = currentUser?.id || 'N/A';
+            if (joinedVia) joinedVia.textContent = userData.joinedVia || 'Telegram';
+        }
 
-    /* =========================================================
-       ADSGRAM FUNCTION
-    ========================================================= */
+        // ==================== ADSGRAM INTEGRATION ====================
+        function initializeAdsGram() {
+            if (!CONFIG.adsgram.enabled) return;
+            try {
+                if (typeof window.Adsgram !== 'undefined') {
+                    AdController = window.Adsgram.init({ blockId: CONFIG.adsgram.blockId, debug: true });
+                    if (AdController) {
+                        adsGramReady = true;
+                        console.log('✅ AdsGram Ready');
+                    }
+                } else {
+                    setTimeout(initializeAdsGram, 2000);
+                }
+            } catch (e) {
+                console.error('AdsGram init error:', e);
+                setTimeout(initializeAdsGram, 3000);
+            }
+        }
 
-    function showAdsgramAd() {
-
-        return new Promise(function(resolve) {
-
-            /*
-               Adsgram SDK না এলে আগের মতোই
-               redirect চালু থাকবে।
-            */
-
-            if (
-                typeof Adsgram === "undefined" ||
-                !Adsgram.init
-            ) {
-
-                console.log(
-                    "Adsgram SDK not loaded"
-                );
-
-                resolve(true);
-
-                return;
+        async function watchAd(rewardCallback) {
+            if (!adsGramReady) { showAlert("Loading ads system..."); return false; }
+            if (isAdShowing) { showAlert("Ad is already playing..."); return false; }
+            if (adsGramCount >= CONFIG.app.dailyAdLimit) {
+                showAlert(`Daily limit reached! (${adsGramCount}/${CONFIG.app.dailyAdLimit})`);
+                return false;
             }
 
+            isAdShowing = true;
+            showAdStatus("Loading ad... Please wait");
 
             try {
-
-                adLoading.classList.add("show");
-
-
-                const controller =
-                    Adsgram.init({
-                        blockId: ADSGRAM_ZONE_ID
-                    });
-
-
-                controller
-                    .show()
-
-                    .then(function() {
-
-                        adLoading.classList.remove(
-                            "show"
-                        );
-
-                        resolve(true);
-
-                    })
-
-                    .catch(function(error) {
-
-                        console.log(
-                            "Adsgram error:",
-                            error
-                        );
-
-                        adLoading.classList.remove(
-                            "show"
-                        );
-
-                        /*
-                           Ad fail করলেও redirect
-                           বন্ধ হবে না।
-                        */
-
-                        resolve(true);
-
-                    });
-
+                await AdController.show();
+                showAdStatus("✓ Ad completed! Adding reward...");
+                
+                adsGramCount++;
+                userData.adsGramCount = adsGramCount;
+                userData.balance = (userData.balance || 0) + CONFIG.app.adReward;
+                userData.lastAdDate = new Date().toISOString().split('T')[0];
+                
+                dailyStats.adsWatched++;
+                saveDailyStats();
+                saveUserData();
+                updateUI();
+                
+                if (rewardCallback) rewardCallback();
+                showAlert(`🎉 You earned ৳${CONFIG.app.adReward}! (${adsGramCount}/${CONFIG.app.dailyAdLimit})`);
+                return true;
+            } catch (e) {
+                console.error('Ad error:', e);
+                showAdStatus("✗ Ad not completed. No reward given.", true);
+                showAlert("Please watch the full ad to earn reward!");
+                return false;
+            } finally {
+                isAdShowing = false;
             }
+        }
 
-            catch(error) {
+        async function claimAd() {
+            await watchAd(null);
+        }
 
-                console.log(
-                    "Adsgram exception:",
-                    error
-                );
-
-                adLoading.classList.remove(
-                    "show"
-                );
-
-                resolve(true);
-
+        // ==================== DAILY JOBS ====================
+        function setupDailyJobs() {
+            const container = document.getElementById('dailyJobsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            for (let i = 1; i <= CONFIG.dailyJobs; i++) {
+                const jobDiv = document.createElement('div');
+                jobDiv.className = 'task-card p-3 flex items-center justify-between';
+                jobDiv.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center text-white font-bold">${i}</div>
+                        <div>
+                            <h4 class="font-medium text-sm">Watch Ad & Earn</h4>
+                            <p class="text-white/40 text-xs">+৳10 per ad</p>
+                        </div>
+                    </div>
+                    <button id="jobBtn${i}" data-job="${i}" class="job-btn px-4 py-2 text-white text-sm font-semibold rounded-full">
+                        Watch Ad
+                    </button>
+                `;
+                container.appendChild(jobDiv);
             }
-
-        });
-
-    }
-
-
-    /* =========================================================
-       VIDEO CLICK
-    ========================================================= */
-
-    let processing = false;
-
-
-    async function playVideo() {
-
-        if (processing) {
-            return;
+            updateJobButtons();
         }
 
+        async function updateJobButtons() {
+            if (!currentUser) return;
+            const key = `jobs_${currentUser.id}`;
+            const completedJobs = JSON.parse(localStorage.getItem(key) || '[]');
+            const now = Date.now();
+            const cooldown = 8 * 60 * 60 * 1000;
 
-        processing = true;
-
-
-        /*
-           Direct link
-        */
-
-        const redirectUrl =
-            videoPlayer.getAttribute(
-                "data-link"
-            );
-
-
-        /*
-           Play button temporary loading
-        */
-
-        playButton.innerHTML =
-            '<span style="font-size:24px">◌</span>';
-
-
-        playButton.style.pointerEvents =
-            "none";
-
-
-        /*
-           Show Adsgram
-        */
-
-        await showAdsgramAd();
-
-
-        /*
-           Redirect after ad
-        */
-
-        if (redirectUrl) {
-
-            window.location.href =
-                redirectUrl;
-
+            for (let i = 1; i <= CONFIG.dailyJobs; i++) {
+                const btn = document.getElementById(`jobBtn${i}`);
+                if (!btn) continue;
+                const jobData = completedJobs.find(j => j.id === i);
+                if (jobData && (now - jobData.time) < cooldown) {
+                    const remaining = cooldown - (now - jobData.time);
+                    const hours = Math.floor(remaining / (60 * 60 * 1000));
+                    const mins = Math.floor((remaining % (60 * 60 * 1000)) / (60 * 1000));
+                    btn.textContent = `${hours}h ${mins}m`;
+                    btn.classList.add('job-btn-disabled');
+                    btn.disabled = true;
+                } else {
+                    btn.textContent = 'Watch Ad';
+                    btn.classList.remove('job-btn-disabled');
+                    btn.disabled = false;
+                    btn.onclick = () => watchAd(() => completeJob(i));
+                }
+            }
         }
 
-    }
-
-
-    /* =========================================================
-       PLAY BUTTON CLICK
-    ========================================================= */
-
-    playButton.addEventListener(
-        "click",
-        function(event) {
-
-            event.stopPropagation();
-
-            playVideo();
-
+        async function completeJob(jobId) {
+            const key = `jobs_${currentUser.id}`;
+            const completedJobs = JSON.parse(localStorage.getItem(key) || '[]');
+            completedJobs.push({ id: jobId, time: Date.now() });
+            localStorage.setItem(key, JSON.stringify(completedJobs));
+            dailyStats.jobsCompleted++;
+            saveDailyStats();
+            updateJobButtons();
+            updateUI();
+            showAlert(`✓ Job ${jobId} completed! +৳${CONFIG.app.dailyJobReward}`);
         }
-    );
 
+        // ==================== WITHDRAWAL SYSTEM ====================
+        function loadWithdrawalHistory() {
+            const container = document.getElementById('withdrawalHistoryList');
+            if (!container) return;
+            const key = `withdrawals_${currentUser?.id}`;
+            const withdrawals = JSON.parse(localStorage.getItem(key) || '[]');
+            if (withdrawals.length === 0) {
+                container.innerHTML = '<p class="text-white/40 text-center py-4">No withdrawal history yet</p>';
+                return;
+            }
+            container.innerHTML = withdrawals.reverse().map(w => `
+                <div class="history-item flex justify-between items-center">
+                    <div>
+                        <p class="font-medium">৳${w.amount} - ${w.method}</p>
+                        <p class="text-white/40 text-xs">${new Date(w.date).toLocaleDateString()}</p>
+                    </div>
+                    <span class="text-xs px-2 py-1 rounded-full ${w.status === 'approved' ? 'bg-green-500/20 text-green-400' : w.status === 'rejected' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'}">${w.status}</span>
+                </div>
+            `).join('');
+        }
 
-    /* =========================================================
-       PLAYER CLICK
-       পুরো player-এ click করলেও ad দেখাবে
-    ========================================================= */
-
-    videoPlayer.addEventListener(
-        "click",
-        function(event) {
-
-            /*
-               Play button থেকে click এলে
-               দ্বিতীয়বার execute হবে না।
-            */
-
-            if (
-                event.target === playButton ||
-                playButton.contains(event.target)
-            ) {
+        async function requestWithdrawal() {
+            const amount = parseInt(document.getElementById('withdrawAmount')?.value || 0);
+            const method = document.getElementById('withdrawMethod')?.value;
+            const paymentDetail = document.getElementById('paymentDetailInput')?.value;
+            
+            if (!amount || amount < CONFIG.app.minWithdrawal) {
+                showAlert(`Minimum withdrawal is ৳${CONFIG.app.minWithdrawal}`);
+                return;
+            }
+            if (amount > (userData.balance || 0)) {
+                showAlert("Insufficient balance");
+                return;
+            }
+            if (!method) {
+                showAlert("Select payment method");
+                return;
+            }
+            if (!paymentDetail) {
+                showAlert("Enter payment details");
                 return;
             }
 
-            playVideo();
-
-        }
-    );
-
-
-    /* =========================================================
-       TELEGRAM WEBAPP
-    ========================================================= */
-
-    try {
-
-        if (
-            window.Telegram &&
-            window.Telegram.WebApp
-        ) {
-
-            Telegram.WebApp.ready();
-
-            Telegram.WebApp.expand();
-
+            const withdrawal = {
+                amount, method, paymentDetail, status: "pending",
+                date: new Date().toISOString()
+            };
+            const key = `withdrawals_${currentUser.id}`;
+            const withdrawals = JSON.parse(localStorage.getItem(key) || '[]');
+            withdrawals.push(withdrawal);
+            localStorage.setItem(key, JSON.stringify(withdrawals));
+            
+            userData.balance -= amount;
+            saveUserData();
+            updateUI();
+            loadWithdrawalHistory();
+            showAlert("Withdrawal request submitted! Processed within 24-48 hours.");
+            
+            document.getElementById('withdrawAmount').value = '';
+            document.getElementById('withdrawMethod').value = '';
+            document.getElementById('paymentDetailsContainer').innerHTML = '';
         }
 
-    }
+        function updatePaymentFields() {
+            const method = document.getElementById('withdrawMethod')?.value;
+            const container = document.getElementById('paymentDetailsContainer');
+            if (!container) return;
+            if (!method) {
+                container.innerHTML = '';
+                return;
+            }
+            const placeholders = { Bkash: "Enter bKash number", Nagad: "Enter Nagad number", Rocket: "Enter Rocket number", Bank: "Enter bank account details" };
+            container.innerHTML = `<input id="paymentDetailInput" type="text" placeholder="${placeholders[method]}" class="input-premium w-full">`;
+        }
 
-    catch(error) {
+        // ==================== STATISTICS ====================
+        function saveDailyStats() {
+            const key = `stats_${dailyStats.date}`;
+            localStorage.setItem(key, JSON.stringify(dailyStats));
+        }
 
-        console.log(
-            "Telegram WebApp error"
-        );
+        function loadDailyStats() {
+            const today = new Date().toISOString().split('T')[0];
+            const key = `stats_${today}`;
+            const saved = localStorage.getItem(key);
+            if (saved) dailyStats = JSON.parse(saved);
+            else {
+                let totalUsers = 0;
+                for (let i = 0; i < localStorage.length; i++) {
+                    if (localStorage.key(i)?.startsWith('user_')) totalUsers++;
+                }
+                dailyStats = { date: today, newUsers: 0, totalUsers, adsWatched: 0, jobsCompleted: 0, totalWithdrawals: 0, totalWithdrawalAmount: 0 };
+            }
+            document.getElementById('totalUsersCount').textContent = dailyStats.totalUsers;
+        }
 
-    }
+        // ==================== TELEGRAM & INIT ====================
+        function initTelegram() {
+            try {
+                tg.ready();
+                tg.expand();
+                const user = tg.initDataUnsafe.user;
+                if (!user) throw new Error("No user");
+                currentUser = {
+                    id: user.id.toString(),
+                    firstName: user.first_name || '',
+                    lastName: user.last_name || '',
+                    username: user.username || '',
+                    photoUrl: user.photo_url || ''
+                };
+                
+                userData = loadUserData();
+                if (!userData) {
+                    userData = {
+                        uid: currentUser.id, name: currentUser.firstName, username: currentUser.username,
+                        balance: 0, adsGramCount: 0, lastAdDate: new Date().toISOString().split('T')[0],
+                        joinedVia: 'Telegram', createdAt: new Date().toISOString()
+                    };
+                    dailyStats.newUsers++;
+                    saveDailyStats();
+                    saveUserData();
+                }
+                adsGramCount = userData.adsGramCount || 0;
+                if (userData.lastAdDate !== new Date().toISOString().split('T')[0]) {
+                    adsGramCount = 0;
+                    userData.adsGramCount = 0;
+                    saveUserData();
+                }
+                updateUI();
+                loadWithdrawalHistory();
+                updateJobButtons();
+                
+                document.getElementById('supportBtn')?.classList.remove('hidden');
+            } catch(e) {
+                console.error(e);
+                // Keep the app accessible even if Telegram initialization fails.
+                document.getElementById('appContainer')?.classList.remove('hidden');
+                document.getElementById('supportBtn')?.classList.remove('hidden');
+            }
+        }
 
+        // ==================== NAVIGATION ====================
+        function navigateTo(pageId) {
+            document.querySelectorAll('.sub-page').forEach(p => p.classList.add('hidden'));
+            document.getElementById(pageId)?.classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(n => {
+                n.classList.remove('active');
+                if (n.dataset.page === pageId) n.classList.add('active');
+            });
+            if (pageId === 'wallet-page') loadWithdrawalHistory();
+            if (pageId === 'daily-jobs-page') updateJobButtons();
+            if (pageId === 'admin-panel') {
+                document.getElementById('adminAdsCount').textContent = `${adsGramCount}/${CONFIG.app.dailyAdLimit}`;
+                document.getElementById('blockIdStatus').textContent = CONFIG.adsgram.blockId;
+            }
+        }
 
-</script>
+        window.navigateTo = navigateTo;
+        window.openSupportPage = () => tg.openLink(CONFIG.support.telegraphUrl);
 
+        // ==================== EVENT LISTENERS ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeAdsGram();
+            initTelegram();
+            loadDailyStats();
+            setupDailyJobs();
+            
+            document.getElementById('watchAdBtn')?.addEventListener('click', claimAd);
+            document.getElementById('homeWithdrawBtn')?.addEventListener('click', () => navigateTo('wallet-page'));
+            document.getElementById('withdrawSubmitBtn')?.addEventListener('click', requestWithdrawal);
+            document.getElementById('withdrawMethod')?.addEventListener('change', updatePaymentFields);
+            document.getElementById('telegramJoinBtn')?.addEventListener('click', () => tg.openLink(CONFIG.social.telegram));
+            document.getElementById('sendBonusBtn')?.addEventListener('click', () => showAlert("Bonus feature - Contact admin"));
+            document.getElementById('sendManualReportBtn')?.addEventListener('click', () => showAlert("Report sent to admin"));
+            
+            document.querySelectorAll('.nav-item').forEach(n => {
+                n.addEventListener('click', () => navigateTo(n.dataset.page));
+            });
+            
+            // Dark mode toggle
+            let isDark = true;
+            document.getElementById('darkModeToggle')?.addEventListener('click', () => {
+                isDark = !isDark;
+                document.body.style.background = isDark ? 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)' : '#f5f5f5';
+            });
+            
+            // Referral link
+            const refLink = document.getElementById('referralLink');
+            if (refLink && currentUser) refLink.value = `https://t.me/${CONFIG.bot.username}?start=${currentUser.id}`;
+            document.getElementById('copyReferralBtn')?.addEventListener('click', () => {
+                const link = document.getElementById('referralLink');
+                link.select();
+                document.execCommand('copy');
+                showAlert("Referral link copied!");
+            });
+        });
+    </script>
 </body>
 </html>
